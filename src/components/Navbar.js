@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import harasLogo from "../assets/haras-logo.png"
 
 class Navbar extends Component {
     
@@ -28,9 +29,9 @@ class Navbar extends Component {
           <div className="navbar-brand">
             <div className="navbar-item" href="https://bulma.io">
               <img
-                src="https://bulma.io/images/bulma-logo.png"
-                width="112"
-                height="28"
+                src={harasLogo}
+                width="180"
+                height="45"
               />
             </div>
 
