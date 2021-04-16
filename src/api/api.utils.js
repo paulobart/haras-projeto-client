@@ -32,6 +32,15 @@ class Api {
     }
   }
 
+  getProfile = async (id) => {
+    try {
+      const { data } = await this.api.get(`/support/infoProfile/${id}`)
+      return data
+   } catch (error) {
+      throw Error(error);
+    }
+  }
+
 
 
 }
