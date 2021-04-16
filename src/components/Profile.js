@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import headerImg from '../assets/header.jpg'
 import sponsorImg from '../assets/sponsor.jpg'
-import cavaloImg from '../assets/cavalo.png'
+import Midia from './Midia'
 
 class Profile extends Component {
     render() {
@@ -30,82 +30,8 @@ class Profile extends Component {
                         </div>
                     </div>
                     <section className="section"></section>
-                    <div className="container-imagens-mensagens">
-                            <div className="componentes-imagens" style={{display: "flex", justifyContent: "space-between"}}>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="box">
-                            <article class="media">
-                                <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                    <strong>John Smith</strong> <small>Admnistrador</small> <small>31m</small>
-                                    <br/>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                    </p>
-                                </div>
-                                </div>
-                            </article>
-                            </div>
-                        </div>
+                    <Midia/>
                     </div>
-                    <section className="section"></section>
-                    <div className="container-imagens-mensagens">
-                            <div className="componentes-imagens" style={{display: "flex", justifyContent: "space-between"}}>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="card-image" style={{paddingRight: "50px"}}>
-                                <figure class="image is-128x128">
-                                <img src={cavaloImg} alt="cavalo"/>
-                                </figure>
-                            </div>
-                            <div class="box">
-                            <article class="media">
-                                <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                    <strong>John Smith</strong> <small>Admnistrador</small> <small>31m</small>
-                                    <br/>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                    </p>
-                                </div>
-                                </div>
-                            </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
               </div>  
             </div>
         )

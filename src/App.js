@@ -6,6 +6,7 @@ import 'bulma/css/bulma.css'
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
+import Login from "./components/Login";
 
 
 class App extends Component {
@@ -17,7 +18,8 @@ class App extends Component {
       <div className="App">
         <Navbar/>
         <Switch>
-          <Route exact path='/' component= {Home}/>      
+          <Route exact path='/' component= {Home}/>
+          <Route exact path='/login' component= {Login}/>      
           <Route exact path='/profile' component= {Profile}/>
         </Switch>
         

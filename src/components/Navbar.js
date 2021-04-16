@@ -60,10 +60,10 @@ class Navbar extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
-                  <div className="button is-primary">
+                  <div className="button is-info">
                     <strong>Sign up</strong>
                   </div>
-                  <div className="button is-light">Log in</div>
+                  <div className="button is-light">Login</div>
                 </div>
               </div>
             </div>
