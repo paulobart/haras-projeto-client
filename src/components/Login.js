@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
+import 'bulma/css/bulma.css'
 
 class Login extends Component {
   state = {
@@ -30,16 +31,17 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <form className="box" style={{ marginRight: "20%", marginLeft: "20%" }}>
+         <form className="box" style={{ marginRight: "20%", marginLeft: "20%", marginTop: "30px" }}>
           <div className="container">
             <div className="notification is-fluid">
               <div className="field">
                 <label className="label">Login</label>
                 <div className="control">
                   <input className="input" value={this.state.email} type="email" placeholder="e.g. alex@example.com" name="email" onChange={this.handleInput}/>
-                </div>
+                 </div>
               </div>
 
+              
               <div className="field">
                 <label className="label"></label>
                 <div className="control">
