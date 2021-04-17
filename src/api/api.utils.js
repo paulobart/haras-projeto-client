@@ -17,8 +17,8 @@ class Api {
         return response;
       },
       (error) => {
-        localStorage.removeItem("token");
-        window.location = `/login`;
+      //  localStorage.removeItem("token");
+      //  window.location = `/login`;
       }
     );
   }
@@ -39,7 +39,29 @@ class Api {
    } catch (error) {
       throw Error(error);
     }
-  }
+  };
+
+  signup = async (payload) => {
+    try {
+      const { data } = await this.api.post("/auth/signup", payload)
+      console.log(data)
+    } catch (error) {
+      throw Error(error)
+    }
+  };
+
+  upload = async (imagem) => {
+    console.log(`estou no upload ${imagem}`)
+    const imageData = new FormData();
+    imageData.append( 'image', imagem )
+    console.log(imageData)
+    try {
+      const { data } = await this.api.post("/auth/upload", imageData)
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  } 
 
 
 
