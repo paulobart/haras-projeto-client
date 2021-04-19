@@ -1,42 +1,37 @@
 import React, { Component } from "react";
-import harasLogo from "../assets/haras-logo.png"
+import harasLogo from "../assets/haras-logo.png";
+import { NavLink, Link } from "react-router-dom";
 
 class Navbar extends Component {
-    
-    state={
-        menu:""
+  state = {
+    menu: "",
+  };
+
+  responsiveMenu = () => {
+    if (this.state.menu === "") {
+      this.setState({
+        menu: "is-active",
+      });
+    } else {
+      this.setState({
+        menu: "",
+      });
     }
+  };
 
-    responsiveMenu = () => {
-        if (this.state.menu === ""){
-            this.setState({
-                menu: "is-active"
-            })
-        }else {
-            this.setState({
-                menu:""
-            })
-        }
-    }
-  
-
-
-    render() {
-
+  render() {
     return (
       <div>
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <div className="navbar-item" href="https://bulma.io">
-              <img
-                src={harasLogo}
-                width="180"
-                height="45"
-              />
+            <div className="navbar-item">
+              <NavLink to="/">
+                <img src={harasLogo} width="180" height="45" />
+              </NavLink>
             </div>
-
-            <div onClick={this.responsiveMenu}
-              role="button" 
+            <div
+              onClick={this.responsiveMenu}
+              role="button"
               className={`navbar-burger ${this.state.menu}`}
               aria-label="menu"
               aria-expanded="false"
@@ -48,7 +43,10 @@ class Navbar extends Component {
             </div>
           </div>
 
-          <div id="navbarBasicExample" className={`navbar-menu ${this.state.menu}`}>
+          <div
+            id="navbarBasicExample"
+            className={`navbar-menu ${this.state.menu}`}
+          >
             <div className="navbar-start">
               <div className="navbar-item">Haras</div>
               <div className="navbar-item">Planos</div>
@@ -60,10 +58,13 @@ class Navbar extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
-                  <div className="button is-info">
+                  <NavLink className="button is-info" to="/signup">
                     <strong>Sign up</strong>
-                  </div>
-                  <div className="button is-light">Login</div>
+                  </NavLink>
+                  <NavLink className="button is-light" to="/login">
+                    {" "}
+                    Login{" "}
+                  </NavLink>
                 </div>
               </div>
             </div>
