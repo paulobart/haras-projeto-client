@@ -39,20 +39,15 @@ class Midia extends Component {
                             <div className="componentes-imagens" style={{display: "flex", justifyContent: "space-between"}}>
                             <div className="card-image" style={{paddingRight: "50px"}}>
                                 <figure className="image is-128x128">
-                                <img src={this.state.midias[0]} alt="cavalo"/>
+                                <img src={cavaloImg} alt="cavalo"/>
                                 </figure>
                             </div>
                             <div className="box">
                             <article className="media">
                                 <div className="media-content">
                                 <div className="content">
-                                    <p>
-                                    <strong>John Smith</strong> <small>Administrador</small> <small>31m</small>
-                                    <br/>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                    </p>
-                                </div>
-                                <button onClick={this.getInfo}>Info Profile </button>
+                               </div>
+                                <button onClick={this.getInfo}>Get Midia </button>
                                 </div>
                             </article>
                             </div>
