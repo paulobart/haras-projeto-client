@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import headerImg from '../assets/header.jpg'
 import sponsorImg from '../assets/sponsor.jpg'
+import Mensagem from './Mensagem'
 import Midia from './Midia'
 
 class Profile extends Component {
@@ -30,7 +31,10 @@ class Profile extends Component {
                         </div>
                     </div>
                     <section className="section"></section>
-                    <Midia/>
+                    <div className="columns">
+                    <Midia className="column is-8"/>
+                    <Mensagem className="column is-4"/>
+                    </div>
                     </div>
               </div>  
             </div>
