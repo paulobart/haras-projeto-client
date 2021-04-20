@@ -62,7 +62,14 @@ class Api {
       console.log(error)
     }
   } 
-
+  getMessage = async (id)=>{
+    try {
+      const { data } = await this.api.get(`/message/getMessage/${id}`)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 
 
 }
