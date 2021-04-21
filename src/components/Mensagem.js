@@ -9,6 +9,7 @@ class Mensagem extends Component {
     this.state = {
       id: "606fb9144356bf0877c1ff74",
       message: [],
+      bodyMessage:""
     };
   }
   getInfo = async () => {
@@ -23,14 +24,31 @@ class Mensagem extends Component {
       console.error(error);
     }
   };
-  // criar funcão para carregar todas as mídias
+  handleSubimitMessage = async () =>{
+    try {
+      const payload ={
+        bodyMessage: this.state.bodyMessage,
+        author: "sponsor"
+      }
+      
+      const messageSponsorTo = await apiUtils.sendMessage(this.state.id,payload);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  handleInput = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  }; 
 
   render() {
     return (
       <div>
         {this.state.message.map(function (message) {
           return (
-            <div>
+            <div className="column is-4">
               {message.author == "sponsor" ? (
                 <div>
                   <figure className="media-left">
@@ -79,14 +97,14 @@ class Mensagem extends Component {
             <div className="field">
               <p className="control">
                 <textarea
-                  className="textarea"
-                  placeholder="Add a comment..."
+                  className="textArea" value={this.state.bodyMessage} name ="bodyMessage"
+                  placeholder="Add a comment..." onChange={this.handleInput}
                 ></textarea>
               </p>
             </div>
             <div className="field">
               <p className="control">
-                <button className="button">Post comment</button>
+                <button  onClick={this.handleSubimitMessage}>Post comment</button>
               </p>
             </div>
           </div>
