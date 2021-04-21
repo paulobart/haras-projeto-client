@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import apiUtils from '../api/api.utils';
-import cavaloImg from '../assets/cavalo.png';
+
 
 
 class Midia extends Component {
@@ -34,16 +34,20 @@ class Midia extends Component {
 // criar funcão para carregar todas as mídias
     render() {
         return (
-            <div>
+            <div className="column is-6"> 
                 <div className="container-imagens-mensagens">
                     <div className="componentes-imagens" style={{display: "flex", justifyContent: "space-between"}}>
                         <div className="card-image" style={{paddingRight: "50px"}}>
                             <figure className="image is-128x128">
                                 {this.state.midias.map(function(image){
                                 return(
-                                <div className=" columns midiasImg " >
-                                    <img className=" column Img " src={image} width='120' />
-                                </div>
+                                    <div>
+                                        <div className=" columns midiasImg " >
+                                            <div className="column "> 
+                                                <img  src={image} width='120' />
+                                            </div>
+                                        </div>
+                                     </div>
                                 )})}
                             </figure>
                             <button onClick={this.getInfo}>Info Profile </button>
@@ -55,6 +59,4 @@ class Midia extends Component {
         )
     }
 }
-
 export default Midia
-

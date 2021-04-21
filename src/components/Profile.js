@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import headerImg from '../assets/header.jpg'
 import sponsorImg from '../assets/sponsor.jpg'
+import Mensagem from './Mensagem'
 import Midia from './Midia'
-import Mensagens from './Mensagens'
+
 
 class Profile extends Component {
     render() {
@@ -31,8 +32,11 @@ class Profile extends Component {
                         </div>
                     </div>
                     <section className="section"></section>
+                    <div className="columns">
                     <Midia/>
-                    <Mensagens/>
+                    <Mensagem/>
+                    </div>
+
                     </div>
               </div>  
             </div>

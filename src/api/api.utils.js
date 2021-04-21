@@ -61,8 +61,12 @@ class Api {
     } catch (error) {
       console.log(error)
     }
-  } 
+  }
+
+  
   getMessage = async (id)=>{
+    console.log(id)
+
     try {
       const { data } = await this.api.get(`/message/getMessage/${id}`)
       return data
@@ -70,9 +74,16 @@ class Api {
       throw Error(error)
     }
   }
-
+  sendMessage = async (id, payload)=>{
+    try {
+  
+    const { data } = await this.api.post(`/message/sendMessage/${id}`,payload)
+    console.log(data)
+    return data
+    } catch (error) {
+    throw Error(error)
+    }
+  }
 
 }
-
-
 export default new Api();
