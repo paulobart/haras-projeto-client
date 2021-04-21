@@ -4,6 +4,7 @@ import sponsorImg from '../assets/sponsor.jpg'
 import Mensagem from './Mensagem'
 import Midia from './Midia'
 
+
 class Profile extends Component {
     render() {
         return (
@@ -32,11 +33,10 @@ class Profile extends Component {
                     </div>
                     <section className="section"></section>
                     <div className="columns">
-                        
-                        <Midia/>
-                        <Mensagem />
-                        
+                    <Midia/>
+                    <Mensagem/>
                     </div>
+
                     </div>
               </div>  
             </div>
