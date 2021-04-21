@@ -49,7 +49,7 @@ class Navbar extends Component {
           >
             <div className="navbar-start">
               <div className="navbar-item">Haras</div>
-              <div className="navbar-item">Planos</div>
+              <NavLink to="/planos" className="navbar-item">Planos</NavLink>
               <div className="navbar-item">Cavalos</div>
               <div className="navbar-item">Reservas</div>
               <div className="navbar-item">Help</div>
