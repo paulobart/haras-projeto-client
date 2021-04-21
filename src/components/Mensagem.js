@@ -30,7 +30,7 @@ class Mensagem extends Component {
       <div>
         {this.state.message.map(function (message) {
           return (
-            <div>
+            <div className="column is-4">
               {message.author == "sponsor" ? (
                 <div>
                   <figure className="media-left">

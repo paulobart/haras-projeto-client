@@ -34,7 +34,7 @@ class Midia extends Component {
 // criar funcão para carregar todas as mídias
     render() {
         return (
-            <div>
+            <div className="column is-6">
                 <div className="container-imagens-mensagens">
                             <div className="componentes-imagens" style={{display: "flex", justifyContent: "space-between"}}>
                             <div className="card-image" style={{paddingRight: "50px"}}>

@@ -32,8 +32,10 @@ class Profile extends Component {
                     </div>
                     <section className="section"></section>
                     <div className="columns">
-                    <Midia className="column is-8"/>
-                    <Mensagem className="column is-4"/>
+                        
+                        <Midia/>
+                        <Mensagem />
+                        
                     </div>
                     </div>
               </div>  
