@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Mensagem from "./components/Mensagem";
 import Planos from "./components/Planos";
+import HorseList from "./components/HorseList";
 
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
           <Route exact path='/profile' component= {Profile}/>
           <Route exact path='/getMessage' component= {Mensagem}/>
           <Route exact path='/planos' component= {Planos}/>
+          <Route exact path='/cavalos' component= {HorseList}/>
         </Switch>
         
       </div>
