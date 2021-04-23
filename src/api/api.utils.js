@@ -74,6 +74,7 @@ class Api {
       throw Error(error)
     }
   }
+  
   sendMessage = async (id, payload)=>{
     try {
   
@@ -82,6 +83,15 @@ class Api {
     return data
     } catch (error) {
     throw Error(error)
+    }
+  }
+
+  getHorse = async (id, payload) => {
+    try {
+      const { data } = await this.api.get(`/horse/listhorse`)
+      return data
+    } catch (error) {
+      throw Error(error)
     }
   }
 
