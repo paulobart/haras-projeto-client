@@ -23,7 +23,7 @@ class HorseList extends Component {
       this.setState({
         horses: horseProfile
       })
-      console.log(this.state.horses)
+      
     } catch (error) {
       console.error(error)
     }
@@ -36,9 +36,9 @@ class HorseList extends Component {
           return (
       <div className="mt-6 columns" style={{ width: "100%" }}>
         <form className="box column is-10 is-offset-1">
-          <article class="media">
-            <div class="media-left mt-2">
-              <figure class="image is-128x128">
+          <article className="media">
+            <div className="media-left mt-2">
+              <figure className="image is-128x128">
                 <img src={horse.imageUrl}/>
               </figure>
             </div>
