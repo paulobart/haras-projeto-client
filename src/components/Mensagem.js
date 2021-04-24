@@ -2,16 +2,33 @@ import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
 import sponsorImg from "../assets/sponsor.jpg";
 import adminImg from "../assets/admin.jpg";
+import {Events, animateScroll as scroll} from 'react-scroll'
 
 class Mensagem extends Component {
   constructor(props) {
     super(props);
+    this.scrollToTop = this.scrollToTop.bind(this);
     this.state = {
       id: "606fb9144356bf0877c1ff74",
       message: [],
       bodyMessage:""
     };
   }
+  componentDidMount = () =>{
+    this.getInfo();
+
+    Events.scrollEvent.register('begin', function () {
+      console.log("begin", arguments);
+    });
+
+    Events.scrollEvent.register('end', function () {
+      console.log("end", arguments);
+    });
+  }
+  scrollToTop() {
+    scroll.scrollToTop();
+  }
+ 
   getInfo = async () => {
     try {
       const messageProfile = await apiUtils.getMessage(this.state.id);
@@ -19,7 +36,7 @@ class Mensagem extends Component {
       this.setState({
         message: copyMessageProfile,
       });
-      console.log(this.state.message);
+    
     } catch (error) {
       console.error(error);
     }
@@ -28,10 +45,12 @@ class Mensagem extends Component {
     try {
       const payload ={
         bodyMessage: this.state.bodyMessage,
-        author: "sponsor"
+        author: "sponsor",
+        sponsor_id: this.state.id
       }
-      
-      const messageSponsorTo = await apiUtils.sendMessage(this.state.id,payload);
+      console.log(this.state.message)
+       await apiUtils.sendMessage(payload);
+      this.getInfo();
     } catch (error) {
       console.error(error);
     }
@@ -45,30 +64,35 @@ class Mensagem extends Component {
 
   render() {
     return (
-      <div>
+      <div className="box " >
+      <div className=" is-flex is-flex-direction-column" style={{width: "100%", height: "70vh", overflow: "auto"}}>
         {this.state.message.map(function (message) {
           return (
-            <div className="column is-4">
+            <div className="">
               {message.author == "sponsor" ? (
                 <div>
-                  <figure className="media-left">
-                    <p className="image is-64x64">
+                  <figure className="media-left is-pulled-right">
+                    <p className="image is-64x64 ">
                       <img src={sponsorImg} />
                     </p>
                   </figure>
-                  <div className="media-content">
+                  <div className="media-content ">
                     <div className="content">
                       <p>
-                        <strong>{message.author}</strong>
-                        <br /> {message.bodyMessage}
-                        <br />
+                      <br/>
+                      <br/>
+                      <br/>
+                        <strong className=" is-pulled-right">{message.author}</strong>
+                          <br/>
+                       <div className="is-12 is-pulled-right is-family-sans-serif " > {message.bodyMessage}</div>
+                        <br/>
                       </p>
                     </div>
                   </div>
                 </div>
               ) : (
                 <div>
-                  <figure className="media-left">
+                  <figure className="media-left ">
                     <p className="image is-64x64">
                       <img src={adminImg} />
                     </p>
@@ -76,8 +100,9 @@ class Mensagem extends Component {
                   <div className="media">
                     <div className="content">
                       <p>
-                        <strong>{message.author}</strong>
-                        <br /> {message.bodyMessage}
+                        <strong className=" is-pulled-left">{message.author}</strong>
+                        <br /> 
+                        <div className=" is-pulled-left is-family-sans-serif">{message.bodyMessage}</div>
                         <br />
                       </p>
                     </div>
@@ -87,17 +112,19 @@ class Mensagem extends Component {
             </div>
           );
         })}
+        </div>
         <article className="media">
           <figure className="media-left">
             <p className="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" />
+              <img src={sponsorImg} />
             </p>
           </figure>
+         
           <div className="media-content">
             <div className="field">
               <p className="control">
                 <textarea
-                  className="textArea" value={this.state.bodyMessage} name ="bodyMessage"
+                  className="textarea is-link has-fixed-size " rows="6" value={this.state.bodyMessage} name ="bodyMessage"
                   placeholder="Add a comment..." onChange={this.handleInput}
                 ></textarea>
               </p>
@@ -106,10 +133,10 @@ class Mensagem extends Component {
               <p className="control">
                 <button  onClick={this.handleSubimitMessage}>Post comment</button>
               </p>
+              <a onClick={this.scrollToTop}>To the top!</a>
             </div>
           </div>
         </article>
-        <button onClick={this.getInfo}>Info Profile </button>
       </div>
     );
   }
