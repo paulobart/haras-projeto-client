@@ -65,8 +65,6 @@ class Api {
 
   
   getMessage = async (id)=>{
-    console.log(id)
-
     try {
       const { data } = await this.api.get(`/message/getMessage/${id}`)
       return data
@@ -74,14 +72,36 @@ class Api {
       throw Error(error)
     }
   }
-  sendMessage = async (id, payload)=>{
+
+ sendMessage = async ( payload)=>{
+
     try {
   
-    const { data } = await this.api.post(`/message/sendMessage/${id}`,payload)
+    const { data } = await this.api.post(`/message/sendMessage`,payload)
     console.log(data)
     return data
     } catch (error) {
     throw Error(error)
+    }
+  }
+
+  getHorse = async () => {
+    try {
+      const { data } = await this.api.get(`/horse/listhorse`)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+
+  getSponsoredHorses = async (id) =>{
+    try {
+      const { data } = await this.api.get(`/support/listhorsetosponsor/${id}`)
+      
+      return data
+    } catch (error) {
+      throw Error(error)
+      
     }
   }
 
