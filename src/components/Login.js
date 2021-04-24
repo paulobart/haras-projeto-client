@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
 import 'bulma/css/bulma.css'
+import { Link, NavLink } from "react-router-dom"
 
 class Login extends Component {
   state = {
@@ -11,11 +12,15 @@ class Login extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await apiUtils.login(this.state);
+      const userDB = await apiUtils.login(this.state);
+      this.props.user(userDB)
       this.setState({
         email: "",
         password: "",
       });
+
+      
+      this.props.history.push("/profile")
     } catch (error) {
       console.error(error);
     }
@@ -28,7 +33,11 @@ class Login extends Component {
     });
   };
 
+  
+  
   render() {
+    
+    
     return (
       <div>
          <form className="box" style={{ marginRight: "20%", marginLeft: "20%", marginTop: "30px" }}>
@@ -56,7 +65,9 @@ class Login extends Component {
               <div className="field"></div>
               <label className="label">Ou crie a sua conta</label>
               <div className="control"></div>
-              <button className="button is-fullwidth" className="button is-info" onClick={this.handleSubmit}>Sign up</button>
+              <Link to="/signup">
+              <button className="button is-fullwidth" className="button is-info">Sign up</button>
+              </Link>
             </div>
           </div>
         </form>

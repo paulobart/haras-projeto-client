@@ -34,7 +34,7 @@ class HorseList extends Component {
       <div>
         {this.state.horses.map(function (horse) {
           return (
-      <div className="mt-6 columns" style={{ width: "100%" }}>
+      <div className="mt-3 columns" style={{ width: "100%" }}>
         <form className="box column is-10 is-offset-1">
           <article className="media">
             <div className="media-left mt-2">
