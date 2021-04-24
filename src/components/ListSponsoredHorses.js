@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
+import SponsoredHorses from "./SponsoredHorses";
+
 
 class ListSponsoredHorses extends Component {
   constructor(props) {
@@ -8,6 +10,7 @@ class ListSponsoredHorses extends Component {
       id: "6071bd1245e7b01c9dc7de92",
       sponsoredHorses: [],
       horse: "",
+      check: false
     };
   }
 
@@ -23,24 +26,26 @@ class ListSponsoredHorses extends Component {
         sponsoredHorses: horseProfileTemp,
       });
 
-      console.log(this.state.sponsoredHorses);
     } catch (error) {
       console.error(error);
     }
   };
-
+  
   getSponsoredHorse = async (index) => {
     try {
-      console.log(index);
+      
       this.setState({
         horse: this.state.sponsoredHorses[index].horse_id,
+        check: true
       });
+      console.log(this.state.horse);
     } catch (error) {}
   };
 
   render() {
     return (
-      <div className=" box is-flex is-flex-direction-column is-align-content-flex-start">
+      
+      <div className="box is-flex is-flex-direction-column is-align-content-flex-start">
       {this.state.sponsoredHorses.map((horse, index) => {
         return (
               
@@ -50,7 +55,16 @@ class ListSponsoredHorses extends Component {
               </label>
             );
           })}
-          </div>     
+
+          {this.state.check == true ? (
+            <div><SponsoredHorses horse={this.state.horse}/></div>
+            
+          ):(
+            <div></div>
+          )}
+
+          </div>
+              
      );
     }
 }
