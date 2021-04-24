@@ -27,14 +27,16 @@ class Api {
     try {
       const { data } = await this.api.post('/auth/login', payload);
       localStorage.setItem('token', data.token)
+      return data.payload
     } catch (error) {
       throw Error(error);  
     }
   }
 
   getProfile = async (id) => {
+    console.log(id)
     try {
-      const { data } = await this.api.get(`/support/infoProfile/${id}`)
+      const { data } = await this.api.get(`/support/infoprofile/${id}`)
       return data
    } catch (error) {
       throw Error(error);

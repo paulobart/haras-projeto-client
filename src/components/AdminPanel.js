@@ -3,7 +3,7 @@ import adminImg from "../assets/admin.jpg";
 import { Link } from "react-router-dom"
 
 
-class AdminPainel extends Component {
+class AdminPanel extends Component {
 
 
   render() {
@@ -106,7 +106,7 @@ class AdminPainel extends Component {
                 </p>
                 <p class="control">
                     <button class="button is-info" style={{width: 200}}>
-                    Enviar Mensagem
+                    Conversas
                     </button>
                 </p>
                </div>
@@ -118,4 +118,4 @@ class AdminPainel extends Component {
   }
 }
 
-export default AdminPainel;
+export default AdminPanel;

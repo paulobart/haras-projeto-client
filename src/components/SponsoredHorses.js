@@ -20,6 +20,9 @@ class SponsoredHorses extends Component {
                     <p className="card-header card-header-title"> Cor: {this.props.horse.color} </p>
                     <p className="card-header card-header-title"> Filiação: {this.props.horse.affiliation} </p>
                     <p className="card-header card-header-title"> Comportamento: {this.props.horse.behavior} </p>
+                    <button name="Reserva" onClick={this.props.namePage} className=" button is-link mt-2 " style={{width: "100%"}}>
+                    Reserva
+                    </button>
                     </div>
           </article>
         </form>
