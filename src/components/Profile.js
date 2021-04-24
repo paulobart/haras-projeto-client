@@ -4,6 +4,7 @@ import sponsorImg from '../assets/sponsor.jpg'
 import Mensagem from './Mensagem'
 import Midia from './Midia'
 import { NavLink, Link } from "react-router-dom";
+import ListSponsoredHorses from "./ListSponsoredHorses";
 
 class Profile extends Component {
     render() {
@@ -27,16 +28,20 @@ class Profile extends Component {
                                         <span classNameName="">Nome Sponsor</span>
                                     </a>
                                     <li className="is-active">
+                                        <NavLink to="/cavalos">
                                         <a>
                                             <span className="icon is-small"><i className="fas fa-horse" aria-hidden="true"></i></span>
-                                            <NavLink to="/cavalos"><span>Lista Cavalos</span><NavLink/>
+                                            <span>Lista Cavalos</span>
                                         </a>
+                                        </NavLink>
                                     </li>
                                     <li>
+                                             <NavLink to="/listacavalosapadrinhados" render={ListSponsoredHorses}>
                                         <a>
                                             <span className="icon is-small"><i className="fas fa-list" aria-hidden="true"></i></span>
                                             <span>Cavalos Apadrinhados</span>
                                         </a>
+                                         </NavLink>
                                     </li>
                                     <li>
                                         <a>
