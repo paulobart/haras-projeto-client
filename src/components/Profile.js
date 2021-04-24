@@ -22,7 +22,7 @@ class Profile extends Component {
                             <figure className="image is-128x128">
                                 <img src={sponsorImg} alt="user"/>
                             </figure>
-                            <div className="tabs is-centered is-boxed is-medium"style={{marginleft: -15}} >
+                            <div className=" tabs is-centered is-boxed is-medium"style={{marginleft: -15}} >
                                 <ul>
                                     <a>
                                         <span classNameName="">Nome Sponsor</span>
