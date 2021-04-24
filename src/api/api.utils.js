@@ -86,12 +86,23 @@ class Api {
     }
   }
 
-  getHorse = async (id, payload) => {
+  getHorse = async () => {
     try {
       const { data } = await this.api.get(`/horse/listhorse`)
       return data
     } catch (error) {
       throw Error(error)
+    }
+  }
+
+  getSponsoredHorses = async (id) =>{
+    try {
+      const { data } = await this.api.get(`/support/listhorsetosponsor/${id}`)
+      
+      return data
+    } catch (error) {
+      throw Error(error)
+      
     }
   }
 
