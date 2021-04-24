@@ -12,7 +12,7 @@ import Mensagem from "./components/Mensagem";
 import Planos from "./components/Planos";
 import HorseList from "./components/HorseList";
 import ListSponsoredHorses from "./components/ListSponsoredHorses";
-import AdminPainel from "./components/AdminPainel";
+import AdminPanel from "./components/AdminPanel";
 
 
 
@@ -33,7 +33,7 @@ class App extends Component {
           <Route exact path='/planos' component= {Planos}/>
           <Route exact path='/cavalos' component= {HorseList}/>
           <Route exact path='/listacavalosapadrinhados' component= {ListSponsoredHorses}/>
-          <Route exact path='/admin' component= {AdminPainel}/>
+          <Route exact path='/admin' component= {AdminPanel}/>
 
         </Switch>
         
