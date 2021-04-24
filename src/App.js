@@ -27,6 +27,7 @@ class App extends Component {
           <Route exact path='/profile' component= {Profile}/>
           <Route exact path='/getMessage' component= {Mensagem}/>
           <Route exact path='/planos' component= {Planos}/>
+        
         </Switch>
         
       </div>
