@@ -13,6 +13,7 @@ import Planos from "./components/Planos";
 import HorseList from "./components/HorseList";
 import ListSponsoredHorses from "./components/ListSponsoredHorses";
 import AdminPanel from "./components/AdminPanel";
+import HorseRegister from "./components/HorseRegister";
 
 
 
@@ -49,6 +50,7 @@ class App extends Component {
           <Route exact path='/cavalos' component= {HorseList}/>
           <Route exact path='/listacavalosapadrinhados' component= {ListSponsoredHorses}/>
           <Route exact path='/admin' component= {AdminPanel}/>
+          <Route exact path='/admin/newhorse' component= {HorseRegister}/>
 
         </Switch>
         

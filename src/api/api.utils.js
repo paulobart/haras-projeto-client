@@ -107,5 +107,14 @@ class Api {
     }
   }
 
+  newHorse = async (payload) => {
+    try {
+      const { data } = await this.api.post("/horse/create", payload)
+      console.log(data)
+    } catch (error) {
+      throw Error(error)
+    }
+  };
+
 }
 export default new Api();
