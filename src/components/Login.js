@@ -13,6 +13,7 @@ class Login extends Component {
     event.preventDefault();
     try {
       const userDB = await apiUtils.login(this.state);
+      console.log(userDB)
       this.props.user(userDB)
       this.setState({
         email: "",
