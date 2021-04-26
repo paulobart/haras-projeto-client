@@ -13,10 +13,24 @@ import Planos from "./components/Planos";
 import HorseList from "./components/HorseList";
 import ListSponsoredHorses from "./components/ListSponsoredHorses";
 import CreatePlanos from "./components/CreatePlanos";
-
-
+import AdminPanel from "./components/AdminPanel";
 
 class App extends Component {
+
+  state = {
+    user: "",
+  }
+
+  handleUser = async (userLogado) => {
+    try {
+      this.setState({
+        user: userLogado
+      })
+    } catch (error) {
+      console.error(error)
+    }
+    
+  }
 
     render() {
 
@@ -26,14 +40,18 @@ class App extends Component {
         <Navbar/>
         <Switch>
           <Route exact path='/' component= {Home}/>
-          <Route exact path='/login' component= {Login}/>
+          <Route exact path='/login' render= {(props) => <Login {...props} user={this.handleUser}/>}/>
           <Route exact path='/signup' component= {Signup}/>      
-          <Route exact path='/profile' component= {Profile}/>
+          <Route exact path='/profile' render = {(props) => <Profile {...props} user = {this.state.user}/>}/>
           <Route exact path='/getMessage' component= {Mensagem}/>
           <Route exact path='/planos' component= {Planos}/>
           <Route exact path='/cavalos' component= {HorseList}/>
           <Route exact path='/listacavalosapadrinhados' component= {ListSponsoredHorses}/>
+
           <Route exact path='/criarplanos' component= {CreatePlanos}/>
+
+          <Route exact path='/admin' component= {AdminPanel}/>
+
 
         </Switch>
         

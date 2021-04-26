@@ -5,24 +5,23 @@ import { Link, Route } from "react-router-dom";
 import playButton from '../assets/playButton.png'
 
 class Midia extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id:"6071bd1245e7b01c9dc7de92",
+        
+    state = {
             midias: [],
             midiasVideo: [],
             url:""
         }
-    }
+    
    
-     componentDidMount = () =>{
-    this.getInfo();
+     componentDidMount = async () =>{        
+        this.getInfo()
+    
   }
 
-    getInfo = async () => {
-        console.log('entrei na getinfo')
+     getInfo = async () => {
+        console.log(this.props)
         try {
-            const infoProfile = await apiUtils.getProfile(this.state.id)
+            const infoProfile = await apiUtils.getProfile(this.props.user)
             const midias = infoProfile.infos.refPlanHorse_id[8].horse_id.midiasImg
             const copiaMidias = [...this.state.midias];
             midias.forEach(midia => {
@@ -38,7 +37,7 @@ class Midia extends Component {
           this.setState({
                 midias: copiaMidias,
                 midiasVideo: copiaMidiasVideo,
-                url:copiaMidiasVideo[0]
+                url:copiaMidiasVideo[0],
             });
            
            } catch (error) {
