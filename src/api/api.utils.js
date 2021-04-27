@@ -135,6 +135,14 @@ class Api {
       throw Error(error)
     }
   };
+  createPlan = async (payload)=>{
+    try {
+      const { data } = await this.api.post('/plans/create',payload)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 
 }
 export default new Api();

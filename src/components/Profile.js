@@ -54,7 +54,11 @@ class Profile extends Component {
                             <figure className="image is-128x128">
                                 <img src={sponsorImg} alt="user"/>
                             </figure>
+
+                            
+
                             <div className="tabs mt-3 is-centered is-boxed is-medium" style={{marginleft: -15}} >
+
                                 <ul>
                                 <li className={this.state.page === "Nome Sponsor" && "is-active"}>
                                     <a>

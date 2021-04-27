@@ -12,12 +12,11 @@ import Mensagem from "./components/Mensagem";
 import Planos from "./components/Planos";
 import HorseList from "./components/HorseList";
 import ListSponsoredHorses from "./components/ListSponsoredHorses";
+import CreatePlanos from "./components/CreatePlanos";
 import AdminPanel from "./components/AdminPanel";
 import HorseRegister from "./components/HorseRegister";
 import ListEditHorse from "./components/ListEditHorse";
 import AdminLogin from "./components/AdminLogin";
-
-
 
 class App extends Component {
 
@@ -67,6 +66,11 @@ class App extends Component {
           <Route exact path='/paineladmin' render = {(props) => <AdminPanel {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/newhorse' component= {HorseRegister}/>
           <Route exact path='/admin/edithorse' component= {ListEditHorse}/>
+
+          <Route exact path='/criarplanos' component= {CreatePlanos}/>
+
+          <Route exact path='/admin' component= {AdminPanel}/>
+
 
         </Switch>
         
