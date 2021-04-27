@@ -14,6 +14,8 @@ import HorseList from "./components/HorseList";
 import ListSponsoredHorses from "./components/ListSponsoredHorses";
 import AdminPanel from "./components/AdminPanel";
 import HorseRegister from "./components/HorseRegister";
+import ListEditHorse from "./components/ListEditHorse";
+import AdminLogin from "./components/AdminLogin";
 
 
 
@@ -21,6 +23,7 @@ class App extends Component {
 
   state = {
     user: "",
+    userAdm: ""
   }
 
   handleUser = async (userLogado) => {
@@ -31,8 +34,19 @@ class App extends Component {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  handleUserAdm = async (admLogado) => {
+    try {
+      this.setState({
+        userAdm: admLogado
+      })
+    } catch (error) {
+      console.error(error)
+    }
     
   }
+
 
     render() {
 
@@ -49,8 +63,10 @@ class App extends Component {
           <Route exact path='/planos' component= {Planos}/>
           <Route exact path='/cavalos' component= {HorseList}/>
           <Route exact path='/listacavalosapadrinhados' component= {ListSponsoredHorses}/>
-          <Route exact path='/admin' component= {AdminPanel}/>
+          <Route exact path='/admin' render= {(props) => <AdminLogin {...props} userAdm ={this.handleUserAdm}/>}/>
+          <Route exact path='/paineladmin' render = {(props) => <AdminPanel {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/newhorse' component= {HorseRegister}/>
+          <Route exact path='/admin/edithorse' component= {ListEditHorse}/>
 
         </Switch>
         

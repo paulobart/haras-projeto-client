@@ -32,6 +32,7 @@ class ListSponsoredHorses extends Component {
   };
   
   getSponsoredHorse = async (index) => {
+    console.log(this.state.sponsoredHorses[index].horse_id)
     try {
       
       this.setState({

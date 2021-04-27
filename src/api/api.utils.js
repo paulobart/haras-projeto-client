@@ -22,6 +22,17 @@ class Api {
       }
     );
   }
+
+
+  loginAdmin = async (payload) => {
+    try {
+      const { data } = await this.api.post('/auth/loginAdm', payload);
+      localStorage.setItem('token', data.token)
+      return data.payload
+    } catch (error) {
+      throw Error(error);  
+    }
+  }
   
   login = async (payload) => {
     try {
@@ -110,6 +121,15 @@ class Api {
   newHorse = async (payload) => {
     try {
       const { data } = await this.api.post("/horse/create", payload)
+      console.log(data)
+    } catch (error) {
+      throw Error(error)
+    }
+  };
+
+  editHorse = async (id, payload) => {
+    try {
+      const { data } = await this.api.put(`/horse/update/${id}`, payload)
       console.log(data)
     } catch (error) {
       throw Error(error)

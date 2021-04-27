@@ -13,6 +13,7 @@ class Login extends Component {
     event.preventDefault();
     try {
       const userDB = await apiUtils.login(this.state);
+      console.log(userDB)
       this.props.user(userDB)
       this.setState({
         email: "",
@@ -65,8 +66,8 @@ class Login extends Component {
               <div className="field"></div>
               <label className="label">Ou crie a sua conta</label>
               <div className="control"></div>
-              <Link to="/signup">
-              <button className="button is-fullwidth" className="button is-info">Sign up</button>
+              <Link to="/signup" style={{textDecoration:"none"}}>
+              <button className="button is-fullwidth is-info" >Sign up</button>
               </Link>
             </div>
           </div>
