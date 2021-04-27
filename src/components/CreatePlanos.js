@@ -52,8 +52,8 @@ handleInput = (event) => {
   }
   render() {
     return (
-      <div className=" box container columns  is-flex ml-6 mt-6">
-            <div className=" column is-7 card  mt-6 mr-1 ml-1">
+      <div className=" box container columns is-fluid is-flex ml-6 mt-6" style={{width: "95%"}}>
+            <div className=" column is-7 card mr-1 ml-1" style= {{marginTop: 35}}>
                 <div className="is-flex">
                     <span className="mt-1 has-text-info has-text-weight-semibold">Tipo de Plano:</span>
                     <label className="radio panel-block control">
@@ -140,7 +140,7 @@ handleInput = (event) => {
                  
             </div>
 
-            <div className="mt-6 mr-6 ml-6 column is-4">
+            <div className="mt-5 mr-6 ml-6 column is-4">
             <div className=" is-flex is-justify-content-space-around">
                 <div className="column  card">
                 <header className="card-header has-background-info">
