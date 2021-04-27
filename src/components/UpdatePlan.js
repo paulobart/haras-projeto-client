@@ -1,17 +1,38 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
 
-class CreatePlanos extends Component {
+class UpdatePlan extends Component {
 
     state = {
-        name:"",
-        descricao:"",
-        price:"",
-        dayUse:"",
-        foto:"",
-        video:"",
+        plan:"",
+        plans:[],
+        check: false
        
     }
+
+getListPlan = async ()=>{
+    try {
+        const plansList = await apiUtils.listPlan()
+        this.setState({
+            plans: plansList
+        })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+getPlanToEdit = async (index) => {
+    
+    try {
+        this.setState({
+            plan: this.state.plans[index],
+            check: true
+        })
+
+    } catch (error) {
+        console.error(error)
+    }
+}
 handleInput = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -38,14 +59,13 @@ handleInput = (event) => {
     event.preventDefault();
     try {
        const payload = {
-            name: this.state.planos,
-            descricao:this.state.descricao,
-            price: this.valor,
-            foto: this.foto,
-            video: this.video,
-            dayUse: this.dayUse
+            name: this.state.plan.name,
+            price: this.state.plan.price,
+            foto: this.state.plan.foto,
+            video: this.state.plan.video,
+            dayUse: this.state.plan.dayUse
         }
-      await apiUtils.createPlan(payload)
+      await apiUtils.editPlan(this.state.plan._id,payload)
  
     } catch (error) {
      
@@ -53,6 +73,19 @@ handleInput = (event) => {
   }
   render() {
     return (
+        <div>
+        <div>
+              {this.state.plans.map((plan, index) => {
+        return (
+              
+              <label key={plan._id} className="radio panel-block control">
+                <input type="radio" name="plan" onChange={()=>this.getPlanToEdit(index)}/>
+                <span className="has-text-info has-text-weight-semibold ml-3"> {plan.name} </span>
+              </label>
+            );
+          })}
+        </div>
+
       <div className=" box container columns is-fluid is-flex ml-6 mt-6" style={{width: "95%"}}>
             <div className=" column is-7 card mr-1 ml-1" style= {{marginTop: 35}}>
                 <div className="is-flex">
@@ -137,7 +170,7 @@ handleInput = (event) => {
                              <span className="has-text-info has-text-weight-semibold ml-2 "> Videos: </span>
                             <input className="ml-3" type="text" placeholder="EX: semanal" name="video" value={this.state.video} onChange={this.handleInput}/>
                 </div> 
-                <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Criar Planos</button>
+                <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Alterar Planos</button>
                  
             </div>
 
@@ -170,9 +203,9 @@ handleInput = (event) => {
             </div>
 
         </div>
-    
+        </div>
     );
   }
 }
 
-export default CreatePlanos;
+export default UpdatePlan;

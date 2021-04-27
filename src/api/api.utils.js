@@ -143,6 +143,21 @@ class Api {
       throw Error(error)
     }
   }
+  listPlan = async ()=>{
+    try {
+      const { data } = await this.api.get('/plans/list')
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+  editPlan = async (id,payload)=>{
+    try {
+      const { data } = await this.api.put(`/plans/update/${id}`, payload)
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 
 }
 export default new Api();
