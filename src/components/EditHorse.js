@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import apiUtils from "../api/api.utils";
+import ListEditHorse from './ListEditHorse';
 
 const initialState = {
     name: "",
@@ -10,11 +11,18 @@ const initialState = {
     behavior: "",
     imagem: "",
     imagemFile: "",
-    register: ""
+    flag: false,
 };
-
-class HorseRegister extends Component {
+class EditHorse extends Component {
     state = initialState
+    
+    
+        
+    loadInfo = async () => {
+      this.setState({
+        name: this.props.horse.name,
+      })
+    }
 
     handleInput = (event) => {
         const { name, value } = event.target;
@@ -23,14 +31,16 @@ class HorseRegister extends Component {
         });
     };
 
+  
+
     handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const {name, age, affiliation, color, breed, behavior, register } = this.state;
+            const {name, age, affiliation, color, breed, behavior} = this.state;
             await this.handleUpload()
             const { imagem } = this.state;
             this.setState(initialState)
-            await apiUtils.newHorse({name, age, affiliation, color, breed, behavior, register, imageUrl: imagem});
+            await apiUtils.editHorse(this.props.horse._id, {name, age, affiliation, color, breed, behavior, imageUrl: imagem});
             
         } catch (error) {
             console.error(error)
@@ -55,49 +65,57 @@ class HorseRegister extends Component {
         })
     }
 
+    
+
+
+
     render() {
         return (
+          
             <div className="mt-5 columns" style={{width: "100%"}}>
+              <div> { this.state.flag === true ? (
+
+                <ListEditHorse load={this.loadInfo}/>  
+              ) : (
+                <div></div>
+              )
+              }</div> 
         <form className="box column is-8 is-offset-2">
           <div className=" columns form-e-imagem"  > 
           <div className="column is-8 formulario">
             <div className="field">
                <div className="control">
-                <input className="input" value={this.state.name} type="name" placeholder="Nome" name="name" onChange={this.handleInput}/>
+                <input className="input" value={this.state.name} type="name" name="name" onChange={this.handleInput}/>
               </div>
             </div>
             <div className="field">
             <div className="control">
-                <input className="input" value={this.state.age} type="age" placeholder="Idade" name="age" onChange={this.handleInput}/>
+                <input className="input" placeholder={this.props.horse.age} value={this.state.age} type="age" name="age" onChange={this.handleInput}/>
               </div>
+              
             </div>
             <div className="field">
              
               <div className="control">
-                <input className="input" value={this.state.affiliation} type="affiliation" placeholder="Filiação" name="affiliation" onChange={this.handleInput} />
+                <input className="input" placeholder={this.props.horse.affiliation} value={this.state.affiliation} type="affiliation" name="affiliation" onChange={this.handleInput} />
               </div>
             </div>
             <div className="field">
                          <div className="control">
-                <input className="input" value={this.state.color} type="cor" placeholder="Cor do Cavalo" name="color" onChange={this.handleInput} />
+                <input className="input" placeholder={this.props.horse.color} value={this.state.color}  type="cor" name="color" onChange={this.handleInput} />
+              </div>
+              </div>
+            <div className="field">
+                         <div className="control">
+                <input className="input" placeholder={this.props.horse.breed} value={this.state.breed} type="breed" name="breed" onChange={this.handleInput} />
               </div>
             </div>
             <div className="field">
                          <div className="control">
-                <input className="input" value={this.state.breed} type="breed" placeholder="Raça" name="breed" onChange={this.handleInput} />
+                <input className="input" placeholder={this.props.horse.behavior} value={this.state.behavior} type="behavior" name="behavior" onChange={this.handleInput} />
               </div>
             </div>
-            <div className="field">
-                         <div className="control">
-                <input className="input" value={this.state.behavior} type="behavior" placeholder="Comportamento" name="behavior" onChange={this.handleInput} />
-              </div>
             </div>
-            <div className="field">
-                         <div className="control">
-                <input className="input" value={this.state.register} type="register" placeholder="Número do Registro" name="register" onChange={this.handleInput} />
-              </div>
-            </div>
-          </div>
           <div className="column is-4 imagem-perfil">
             <div className="notification is-fluid" >
               <div className="file is-info is-boxed has-name" style={{justifyContent:"center"}}>
@@ -116,12 +134,12 @@ class HorseRegister extends Component {
           </div>
           </div>
           <button className="button is-fullwidth" className="button is-info" onClick={this.handleSubmit} style={{width: "100%"}}>
-            <p>Cadastre Novo Cavalo</p>
+            <p>Gravar Alterações do Cavalo</p>
           </button>
           </form>
-      </div>
+    </div>
         )
     }
 }
 
-export default HorseRegister
+export default EditHorse
