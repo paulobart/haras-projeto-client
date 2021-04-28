@@ -71,6 +71,7 @@ class App extends Component {
           <Route exact path='/admin/criarplanos' component= {CreatePlanos}/>
           <Route exact path='/admin/editarplanos' component= {ListUpdatePlanos}/>
           <Route exact path='/admin' component= {AdminPanel}/>
+          
           <Route exact path='/admin/createAdmin' component= {CreateAdmin}/>
 
 
