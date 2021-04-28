@@ -164,6 +164,7 @@ class Api {
   editPlan = async (id,payload)=>{
     try {
       const { data } = await this.api.put(`/plans/update/${id}`, payload)
+      return data
     } catch (error) {
       throw Error(error)
     }
