@@ -1,96 +1,64 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import apiUtils from "../api/api.utils";
 
+
+const initialState = {
+        planos:"",
+        descricao:"",
+        price:"",
+        dayUse:"",
+        foto:"",
+        video:"",
+};
+
 class UpdatePlan extends Component {
-
-    state = {
-        plan:"",
-        plans:[],
-        check: false
+    state = initialState
+    
+    handleInput = (event) => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value,
+        });
+      };
+      handleInputRadio = (event) => {
         
-    }
-
-componentDidMount = ()=>{
-    this.getListPlan();
-}
-getListPlan = async ()=>{
-    try {
-        const plansList = await apiUtils.listPlan()
+        const { name, defaultValue } = event.target;
         this.setState({
-            plans: plansList
-        })
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-getPlanToEdit = async (index) => {
-    
-    try {
-        this.setState({
-            plan: this.state.plans[index],
-            check: true
-        })
-
-    } catch (error) {
-        console.error(error)
-    }
-}
-handleInput = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-  handleInputRadio = (event) => {
-    
-    const { name, defaultValue } = event.target;
-    this.setState({
-      [name]: defaultValue,
-    });
-  };
-   handleInputSelect = (event) => {
-    console.log(event)
-    
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-
-    handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-       const payload = {
-            name: this.state.plan.name,
-            price: this.state.plan.price,
-            foto: this.state.plan.foto,
-            video: this.state.plan.video,
-            dayUse: this.state.plan.dayUse
+          [name]: defaultValue,
+        });
+      };
+      
+        handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+           const payload = {
+                    name: this.state.planos,
+                    description:this.state.descricao,
+                    price: this.state.price,
+                    foto: this.state.foto,
+                    video: this.state.video,
+                    dayUse: this.state.dayUse
+                }
+                await apiUtils.editPlan(this.props.plan._id,payload);
+                this.props.getListPlan()
+        } catch (error) {
+         console.log(error)
         }
-      await apiUtils.editPlan(this.state.plan._id,payload)
- 
-    } catch (error) {
-     
-    }
-  }
-  render() {
-    return (
-        <div>
-        <div>
-              {this.state.plans.map((plan, index) => {
-        return (
-              
-              <label key={plan._id} className="radio panel-block control">
-                <input type="radio" name="plan" onChange={()=>this.getPlanToEdit(index)}/>
-                <span className="has-text-info has-text-weight-semibold ml-3"> {plan.name} </span>
-              </label>
-            );
-          })}
-        </div>
+      }
+    
 
-      <div className=" box container columns is-fluid is-flex ml-6 mt-6" style={{width: "95%"}}>
-            <div className=" column is-7 card mr-1 ml-1" style= {{marginTop: 35}}>
+    render(){
+        return (
+           
+            <div className="mt-5 ml-1 columns" style={{width: "100%"}}>
+                <form className="box column is-12 ">
+                    <div>
+                        <p className="card-header-title is-size-4 has-text-info">
+                        Preencha as informações para alterar 
+                        </p>
+                    </div>   
+                <div className="  container  columns is-fluid is-flex" >
+            <div className=" column is-8 card " style= {{marginTop: 35}}>
                 <div className="is-flex">
                     <span className="mt-1 has-text-info has-text-weight-semibold">Tipo de Plano:</span>
                     <label className="radio panel-block control">
@@ -125,40 +93,57 @@ handleInput = (event) => {
                 </div>
                 <div className="mt-3 is-flex">
                 <span className="has-text-info has-text-weight-semibold "> Valor: </span>
-                        <input className=" ml-3" type="text" placeholder="R$25,00" name="valor" value={this.state.valor} onChange={this.handleInput}/>
+                        <input className=" ml-3" type="text" placeholder="R$25,00" name="price" value={this.state.price} onChange={this.handleInput}/>
                 </div>
                 <div className="mt-3 is-flex">
                          <span className="mt-1 has-text-info has-text-weight-semibold ">Beneficios</span>
                 </div>
                 <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold  "> Day Use Mensal: </span>
-                            <div class="select is-info ml-2" >
-                                <select name="dayUse" value={this.state.dayUse} onChange={this.handleInputSelect}> 
+                            <div className="select is-info ml-2" >
+                                <select name="dayUse" value={this.state.dayUse} onChange={this.handleInput}> 
+                                    
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    
                                 </select>
                             </div>
                                <span className="ml-2">Dias</span>
                 </div>
                 <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold  "> Foto: </span>
-                            <div class="select is-info ml-2" name="foto" value={this.state.foto} onChange={this.handleInputSelect}>
-                                <select>
-                                    <option value="1">1</option>
+                            <div className="select is-info ml-2">
+                                <select class="select is-info ml-2" name="foto" value={this.state.foto} onChange={this.handleInput}>
+                                <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
                                 </select>
                             </div>
                                <span className="ml-2">Foto</span>
                 </div>
                 <div className="mt-3 is-flex">
-                         <span className="has-text-info has-text-weight-semibold" name="video" value={this.state.video} onChange={this.handleInputSelect}> Video: </span>
-                            <div class="select is-info ml-2">
-                                <select>
-                                    <option value="1">1</option>
+                         <span className="has-text-info has-text-weight-semibold "> Video: </span>
+                            <div className="select is-info ml-2">
+                                <select className="has-text-info has-text-weight-semibold" name="video" value={this.state.video} onChange={this.handleInput}>
+                                <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
                                 </select>
                             </div>
                                <span className="ml-2">Video</span>
@@ -166,14 +151,14 @@ handleInput = (event) => {
                 
                    <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold  "> Personalizado: </span>
-                            <span className="has-text-info has-text-weight-semibold  ml-2" > Dias: </span>
+                            <span className="has-text-info has-text-weight-semibold  ml-2" > Dia: </span>
                             <input className="ml-3" type="text" placeholder="EX: semanal" name="dayUse" value={this.state.dayUse} onChange={this.handleInput}/>
-                            <span className="has-text-info has-text-weight-semibold ml-2 "> Fotos: </span>
+                            <span className="has-text-info has-text-weight-semibold ml-2 "> Foto: </span>
                             <input className="ml-3" type="text" placeholder="EX: semanal" name="foto" value={this.state.foto} onChange={this.handleInput}/>
-                             <span className="has-text-info has-text-weight-semibold ml-2 "> Videos: </span>
+                             <span className="has-text-info has-text-weight-semibold ml-2 "> Video: </span>
                             <input className="ml-3" type="text" placeholder="EX: semanal" name="video" value={this.state.video} onChange={this.handleInput}/>
                 </div> 
-                <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Alterar Planos</button>
+                <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Salvar alterações Planos</button>
                  
             </div>
 
@@ -189,7 +174,7 @@ handleInput = (event) => {
                     <br/>
                     <br/>
                     <strong className="has-text-info">Valor</strong>
-                    <p>R$ {this.state.valor} </p>
+                    <p>R$ {this.state.price} </p>
                     <strong className="has-text-info">Benefícios</strong>
                     <div><span className="has-text-info">✔</span> {this.state.dayUse} day use por mês</div>
                     <div><span className="has-text-info">✔</span> {this.state.foto} Foto diária</div>
@@ -205,10 +190,12 @@ handleInput = (event) => {
             </div>
             </div>
 
-        </div>
-        </div>
-    );
-  }
+        </div>   
+                </form> 
+            </div>
+        )
+    }
 }
 
-export default UpdatePlan;
+export default UpdatePlan    
+            

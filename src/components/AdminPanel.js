@@ -54,14 +54,16 @@ class AdminPanel extends Component {
             <div className="botoes-admin-planos card-header mt-3 py-2">
             <div class="field is-grouped">
                 <p class="control">
-                    <button class="ml-2 button is-link" style={{width: 200}}>
+                <Link to="admin/criarplanos"><button class="ml-2 button is-link" style={{width: 200}}>
                     Cadastrar Plano
                     </button>
+                </Link>      
                 </p>
                 <p class="control">
-                    <button class="button is-link" style={{width: 200}}>
+                <Link to="admin/editarplanos"><button class="button is-link" style={{width: 200}}>
                     Editar Plano
                     </button>
+                </Link>     
                 </p>
                 <p class="control">
                     <button class="button is-link" style={{width: 200}}>
