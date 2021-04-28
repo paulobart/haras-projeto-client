@@ -145,8 +145,25 @@ class Api {
   };
   createPlan = async (payload)=>{
     try {
+      console.log(payload)
       const { data } = await this.api.post('/plans/create',payload)
+      console.log(data)
       return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+  listPlan = async ()=>{
+    try {
+      const { data } = await this.api.get('/plans/list')
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+  editPlan = async (id,payload)=>{
+    try {
+      const { data } = await this.api.put(`/plans/update/${id}`, payload)
     } catch (error) {
       throw Error(error)
     }

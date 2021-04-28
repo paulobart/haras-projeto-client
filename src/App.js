@@ -17,6 +17,7 @@ import AdminPanel from "./components/AdminPanel";
 import HorseRegister from "./components/HorseRegister";
 import ListEditHorse from "./components/ListEditHorse";
 import AdminLogin from "./components/AdminLogin";
+import UpdatePlan from "./components/UpdatePlan";
 import CreateAdmin from "./components/CreateAdmin";
 
 class App extends Component {
@@ -68,6 +69,8 @@ class App extends Component {
           <Route exact path='/admin/newhorse' component= {HorseRegister}/>
           <Route exact path='/admin/edithorse' component= {ListEditHorse}/>
           <Route exact path='/criarplanos' component= {CreatePlanos}/>
+          <Route exact path='/editarplanos' component= {UpdatePlan}/>
+
           <Route exact path='/admin' component= {AdminPanel}/>
           <Route exact path='/admin/createAdmin' component= {CreateAdmin}/>
 
