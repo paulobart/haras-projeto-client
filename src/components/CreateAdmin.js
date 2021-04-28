@@ -3,17 +3,15 @@ import apiUtils from "../api/api.utils";
 
 const initialState = {
     name: "",
+    email: "",
     age: "",
-    affiliation: "",
-    color: "",
-    breed: "",
-    behavior: "",
+    phone: "",
     imagem: "",
     imagemFile: "",
-    register: ""
+    password: ""
 };
 
-class HorseRegister extends Component {
+class CreateAdmin extends Component {
     state = initialState
 
     handleInput = (event) => {
@@ -26,11 +24,11 @@ class HorseRegister extends Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const {name, age, affiliation, color, breed, behavior, register } = this.state;
+            const { name, email, age, phone, password } = this.state;
             await this.handleUpload()
             const { imagem } = this.state;
             this.setState(initialState)
-            await apiUtils.newHorse({name, age, affiliation, color, breed, behavior, register, imageUrl: imagem});
+            await apiUtils.newAdmin({name, age, email, phone, password, imageUrl: imagem});
             
         } catch (error) {
             console.error(error)
@@ -43,17 +41,16 @@ class HorseRegister extends Component {
             this.setState({
                 imagem: imageUrl
             })
-            
         } catch (error) {
-            console.error(error)            
+            console.error(error)
         }
-    }
+    };
 
-    handleChangeFile = (event) => {
+    handChangeFile = (event) => {
         this.setState({
-            imagemFile: event.target.files[0]
+            imagemFile: event.taget.files[0]
         })
-    }
+    };
 
     render() {
         return (
@@ -61,48 +58,38 @@ class HorseRegister extends Component {
         <form className="box column is-8 is-offset-2">
         <div>
         <p className="card-header-title is-size-4 has-text-info">
-          Cadastre Novo Cavalo 
+          Cadastre Novo Administrador
           </p>
       </div>
           <div className=" columns form-e-imagem"  > 
           <div className="column is-8 formulario">
             <div className="field">
                <div className="control">
-                <input className="input" value={this.state.name} type="name" placeholder="Nome" name="name" onChange={this.handleInput}/>
+                <input className="input" value={this.state.name} type="name" placeholder="Name" name="name" onChange={this.handleInput}/>
               </div>
             </div>
             <div className="field">
             <div className="control">
-                <input className="input" value={this.state.age} type="age" placeholder="Idade" name="age" onChange={this.handleInput}/>
+                <input className="input" value={this.state.email} type="email" placeholder="e.g. alex@example.com" name="email" onChange={this.handleInput}/>
               </div>
             </div>
             <div className="field">
              
               <div className="control">
-                <input className="input" value={this.state.affiliation} type="affiliation" placeholder="Filiação" name="affiliation" onChange={this.handleInput} />
+                <input className="input" value={this.state.age} type="age" placeholder="Idade" name="age" onChange={this.handleInput} />
               </div>
             </div>
             <div className="field">
                          <div className="control">
-                <input className="input" value={this.state.color} type="cor" placeholder="Cor do Cavalo" name="color" onChange={this.handleInput} />
+                <input className="input" value={this.state.phone} type="phone" placeholder="Número de telefone" name="phone" onChange={this.handleInput} />
               </div>
             </div>
             <div className="field">
                          <div className="control">
-                <input className="input" value={this.state.breed} type="breed" placeholder="Raça" name="breed" onChange={this.handleInput} />
+                <input className="input" value={this.state.password} type="password" placeholder="Password" name="password" onChange={this.handleInput} />
               </div>
             </div>
-            <div className="field">
-                         <div className="control">
-                <input className="input" value={this.state.behavior} type="behavior" placeholder="Comportamento" name="behavior" onChange={this.handleInput} />
-              </div>
             </div>
-            <div className="field">
-                         <div className="control">
-                <input className="input" value={this.state.register} type="register" placeholder="Número do Registro" name="register" onChange={this.handleInput} />
-              </div>
-            </div>
-          </div>
           <div className="column is-4 imagem-perfil">
             <div className="notification is-fluid" >
               <div className="file is-info is-boxed has-name" style={{justifyContent:"center"}}>
@@ -112,7 +99,7 @@ class HorseRegister extends Component {
                     <span className="file-icon">
                       <i className="fas fa-upload"></i>
                     </span>
-                    <span className="file-label">Imagem do Cavalo</span>
+                    <span className="file-label">Imagem para perfil</span>
                   </span>
                   <span className="file-name">{this.state.imagemFile.name}</span>
                 </label>
@@ -121,7 +108,7 @@ class HorseRegister extends Component {
           </div>
           </div>
           <button className="button is-fullwidth" className="button is-info" onClick={this.handleSubmit} style={{width: "100%"}}>
-            <p>Cadastre Novo Cavalo</p>
+            <p>Cadastre-se</p>
           </button>
           </form>
       </div>
@@ -129,4 +116,4 @@ class HorseRegister extends Component {
     }
 }
 
-export default HorseRegister
+export default CreateAdmin
