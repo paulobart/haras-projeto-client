@@ -9,14 +9,18 @@ class ListEditHorse extends Component {
         super(props);
         this.state = {
             horses: [],
-            horse: "",
-            check: false
+            horse: {},
+            check: false,
+            newImage:"",
+            imagemFile: ""
         };
       }
 
     componentDidMount = () => {
         this.loadHorseList();
     };  
+
+       
 
 loadHorseList = async () => {
     try {
@@ -30,24 +34,70 @@ loadHorseList = async () => {
     }
 };
 
-getHorseToEdit = async (index) => {
-    
-    try {
-        this.setState({
-            horse: this.state.horses[index],
-            check: true
-        })
-        this.props.load();
-        
+getHorseToEdit = (index) => {
+       this.setState({
+       horse: this.state.horses[index],
+       check: true
+    })
+ 
+}
 
+handleEditHorse = async (event) => {
+    event.preventDefault()
+    try {
+        //const {name, age, affiliation, color, breed, behavior} = this.state;
+        await this.handleUpload()
+        const { imagem } = this.state;
+        const editedHorseTemp = {...this.state.horse}
+        editedHorseTemp.imageUrl = imagem
+        await apiUtils.editHorse(this.state.horse._id, editedHorseTemp);
+        this.loadHorseList();
+        
     } catch (error) {
         console.error(error)
     }
+};
+
+
+handleChangeFile = (event) => {
+    this.setState({
+        imagemFile: event.target.files[0]
+    })
+};
+
+handleUpload = async (event) => {
+    try {
+        const imageUrl = await apiUtils.upload(this.state.imagemFile)
+        this.setState({
+            imagem: imageUrl
+        })
+        
+    } catch (error) {
+        console.error(error)            
+    }
 }
+
+
+handleInput = (event) => {
+    const { name, value } = event.target;
+    const newHorseTemp = { ...this.state.horse }
+    newHorseTemp[name] = value
+    this.setState({
+        horse: newHorseTemp,
+    });
+};
+
+
+
 
     render() {
         return (
-            <div className="box is-flex is-flex-direction-column is-align-content-flex-start">
+            <div className="box ml-5 mt-6 mr-5 is-flex is-flex-direction-column is-align-content-flex-start">
+                <div>
+        <p className="card-header-title is-size-4 has-text-info">
+          Selecione o Cavalo para editar 
+          </p>
+      </div>
       {this.state.horses.map((horse, index) => {
         return (
               
@@ -59,7 +109,7 @@ getHorseToEdit = async (index) => {
           })}
 
           {this.state.check == true ? (
-            <div><EditHorse horse={this.state.horse}/></div>
+            <div><EditHorse horse={this.state.horse} editHorse={this.handleEditHorse} handleInput={this.handleInput} handleChangeFile={this.handleChangeFile} imagemFile={this.state.imagemFile}/></div>
             
           ):(
             <div></div>

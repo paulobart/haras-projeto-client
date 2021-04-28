@@ -15,16 +15,16 @@ class AdminPanel extends Component {
               <div className="foto-admin">
                 <div className="imagem-header">
                   <figure className="image is-128x128">
-                    <img src={adminImg} />
+                    <img src={this.props.user.imageUrl} />
                   </figure>
                 </div>
               </div>
               <div className="dados-admin"></div>
-              <p className="card-header card-header-title is-size-4 has-text-info"> Nome Administrador
+              <p className="card-header card-header-title is-size-4 has-text-info"> {this.props.user.name}
               </p>
-              <p className="card-header card-header-title"> Email 
+              <p className="card-header card-header-title is-size-6 has-text-info"> E-mail: {this.props.user.email}
               </p>
-              <p className="card-header card-header-title"> Telefone 
+              <p className="card-header card-header-title is-size-6 has-text-info"> Telefone: {this.props.user.phone}
               </p>
             </div>
           </div>
@@ -39,9 +39,10 @@ class AdminPanel extends Component {
                     </Link>
                 </p>
                 <p class="control">
-                    <button class="button is-info" style={{width: 200}}>
+                <Link to="admin/edithorse"><button class="button is-info" style={{width: 200}}>
                     Editar Cavalo
                     </button>
+                    </Link>    
                 </p>
                 <p class="control">
                     <button class="button is-info" style={{width: 200}}>
@@ -66,6 +67,7 @@ class AdminPanel extends Component {
                     <button class="button is-link" style={{width: 200}}>
                     Deletar Plano
                     </button>
+                    
                 </p>
                 </div>
             </div>
@@ -77,9 +79,10 @@ class AdminPanel extends Component {
                     </button>
                 </p>
                 <p class="control">
-                    <button class="button is-info" style={{width: 200}}>
+                <Link to="/admin/createAdmin"><button class="button is-info" style={{width: 200}}>
                     Novo Administrador
                     </button>
+                    </Link>
                 </p>
                 <p class="control">
                     <button class="button is-info" style={{width: 200}}>

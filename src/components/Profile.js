@@ -52,7 +52,7 @@ class Profile extends Component {
                         </div>
                         <div className="imagem-menu is-flex is-justify-content-space-between" style={{marginTop: -35}}>
                             <figure className="image is-128x128">
-                                <img src={sponsorImg} alt="user"/>
+                                <img src={this.props.user.imageUrl} alt="user"/>
                             </figure>
 
                             
@@ -62,7 +62,7 @@ class Profile extends Component {
                                 <ul>
                                 <li className={this.state.page === "Nome Sponsor" && "is-active"}>
                                     <a>
-                                    <div onClick={this.handleInput}>Nome Sponsor</div>
+                                    <div onClick={this.handleInput}>{this.props.user.name}</div>
                                     </a>
                                     </li>
                                     <li className={this.state.page === "Lista Cavalos" && "is-active"}>
