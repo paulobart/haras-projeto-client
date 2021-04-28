@@ -4,7 +4,7 @@ import apiUtils from "../api/api.utils";
 class CreatePlanos extends Component {
 
     state = {
-        name:"",
+        planos:"",
         descricao:"",
         price:"",
         dayUse:"",
@@ -26,11 +26,11 @@ handleInput = (event) => {
     });
   };
    handleInputSelect = (event) => {
-    console.log(event)
+    console.log(event.target.value)
     
-    const { name, defaultValue } = event.target;
+    const { name, value } = event.target;
     this.setState({
-      [name]: defaultValue,
+      [name]: value,
     });
   };
 
@@ -40,15 +40,15 @@ handleInput = (event) => {
        const payload = {
             name: this.state.planos,
             descricao:this.state.descricao,
-            price: this.valor,
-            foto: this.foto,
-            video: this.video,
-            dayUse: this.dayUse
+            price: this.state.price,
+            foto: this.state.foto,
+            video: this.state.video,
+            dayUse: this.state.dayUse
         }
       await apiUtils.createPlan(payload)
  
     } catch (error) {
-     
+     console.log(error)
     }
   }
   render() {
@@ -89,40 +89,41 @@ handleInput = (event) => {
                 </div>
                 <div className="mt-3 is-flex">
                 <span className="has-text-info has-text-weight-semibold "> Valor: </span>
-                        <input className=" ml-3" type="text" placeholder="R$25,00" name="valor" value={this.state.valor} onChange={this.handleInput}/>
+                        <input className=" ml-3" type="text" placeholder="R$25,00" name="price" value={this.state.price} onChange={this.handleInput}/>
                 </div>
                 <div className="mt-3 is-flex">
                          <span className="mt-1 has-text-info has-text-weight-semibold ">Beneficios</span>
                 </div>
                 <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold  "> Day Use Mensal: </span>
-                            <div class="select is-info ml-2" >
+                            <div className="select is-info ml-2" >
                                 <select name="dayUse" value={this.state.dayUse} onChange={this.handleInputSelect}> 
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    
                                 </select>
                             </div>
                                <span className="ml-2">Dias</span>
                 </div>
                 <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold  "> Foto: </span>
-                            <div class="select is-info ml-2" name="foto" value={this.state.foto} onChange={this.handleInputSelect}>
-                                <select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                            <div className="select is-info ml-2">
+                                <select class="select is-info ml-2" name="foto" value={this.state.foto} onChange={this.handleInputSelect}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                                 </select>
                             </div>
                                <span className="ml-2">Foto</span>
                 </div>
                 <div className="mt-3 is-flex">
-                         <span className="has-text-info has-text-weight-semibold" name="video" value={this.state.video} onChange={this.handleInputSelect}> Video: </span>
-                            <div class="select is-info ml-2">
-                                <select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                         <span className="has-text-info has-text-weight-semibold "> Video: </span>
+                            <div className="select is-info ml-2">
+                                <select className="has-text-info has-text-weight-semibold" name="video" value={this.state.video} onChange={this.handleInputSelect}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                                 </select>
                             </div>
                                <span className="ml-2">Video</span>
@@ -130,11 +131,11 @@ handleInput = (event) => {
                 
                    <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold  "> Personalizado: </span>
-                            <span className="has-text-info has-text-weight-semibold  ml-2" > Dias: </span>
+                            <span className="has-text-info has-text-weight-semibold  ml-2" > Dia: </span>
                             <input className="ml-3" type="text" placeholder="EX: semanal" name="dayUse" value={this.state.dayUse} onChange={this.handleInput}/>
-                            <span className="has-text-info has-text-weight-semibold ml-2 "> Fotos: </span>
+                            <span className="has-text-info has-text-weight-semibold ml-2 "> Foto: </span>
                             <input className="ml-3" type="text" placeholder="EX: semanal" name="foto" value={this.state.foto} onChange={this.handleInput}/>
-                             <span className="has-text-info has-text-weight-semibold ml-2 "> Videos: </span>
+                             <span className="has-text-info has-text-weight-semibold ml-2 "> Video: </span>
                             <input className="ml-3" type="text" placeholder="EX: semanal" name="video" value={this.state.video} onChange={this.handleInput}/>
                 </div> 
                 <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Criar Planos</button>

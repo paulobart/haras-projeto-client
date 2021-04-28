@@ -7,9 +7,12 @@ class UpdatePlan extends Component {
         plan:"",
         plans:[],
         check: false
-       
+        
     }
 
+componentDidMount = ()=>{
+    this.getListPlan();
+}
 getListPlan = async ()=>{
     try {
         const plansList = await apiUtils.listPlan()
@@ -49,9 +52,9 @@ handleInput = (event) => {
    handleInputSelect = (event) => {
     console.log(event)
     
-    const { name, defaultValue } = event.target;
+    const { name, value } = event.target;
     this.setState({
-      [name]: defaultValue,
+      [name]: value,
     });
   };
 
@@ -131,9 +134,9 @@ handleInput = (event) => {
                          <span className="has-text-info has-text-weight-semibold  "> Day Use Mensal: </span>
                             <div class="select is-info ml-2" >
                                 <select name="dayUse" value={this.state.dayUse} onChange={this.handleInputSelect}> 
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                             </div>
                                <span className="ml-2">Dias</span>
@@ -142,9 +145,9 @@ handleInput = (event) => {
                          <span className="has-text-info has-text-weight-semibold  "> Foto: </span>
                             <div class="select is-info ml-2" name="foto" value={this.state.foto} onChange={this.handleInputSelect}>
                                 <select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                             </div>
                                <span className="ml-2">Foto</span>
@@ -153,9 +156,9 @@ handleInput = (event) => {
                          <span className="has-text-info has-text-weight-semibold" name="video" value={this.state.video} onChange={this.handleInputSelect}> Video: </span>
                             <div class="select is-info ml-2">
                                 <select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                             </div>
                                <span className="ml-2">Video</span>
