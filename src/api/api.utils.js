@@ -33,6 +33,14 @@ class Api {
       throw Error(error);  
     }
   }
+
+  newAdmin = async (payload) => {
+    try {
+      const { data } = await this.api.post("/auth/signupAdm", payload) 
+    } catch (error) {
+      console.log(error)
+    }
+  }
   
   login = async (payload) => {
     try {

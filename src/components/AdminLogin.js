@@ -17,7 +17,7 @@ class AdminLogin extends Component {
         password: "",
       });
 
-      this.props.history.push("/paineladmin");
+      this.props.history.push("/adminpainel");
     } catch (error) {
       console.error(error);
     }
