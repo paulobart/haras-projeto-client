@@ -20,6 +20,7 @@ import AdminLogin from "./components/AdminLogin";
 import CreateAdmin from "./components/CreateAdmin";
 import ListUpdatePlanos from "./components/ListUpdatePlanos";
 import EditHaras from "./components/EditHaras";
+import UploadMidia from "./components/UploadMidia";
 
 class App extends Component {
 
@@ -62,7 +63,7 @@ class App extends Component {
           <Route exact path='/signup' component= {Signup}/>      
           <Route exact path='/profile' render = {(props) => <Profile {...props} user = {this.state.user}/>}/>
           <Route exact path='/getMessage' component= {Mensagem}/>
-          <Route exact path='/planos' component= {Planos}/>
+          <Route path='/planos/:id' component= {Planos}/>
           <Route exact path='/cavalos' component= {HorseList}/>
           <Route exact path='/listacavalosapadrinhados' component= {ListSponsoredHorses}/>
           <Route exact path='/admin' render= {(props) => <AdminLogin {...props} userAdm ={this.handleUserAdm}/>}/>
@@ -73,6 +74,7 @@ class App extends Component {
           <Route exact path='/admin/editarplanos' component= {ListUpdatePlanos}/>
           <Route exact path='/admin/updateharas' render = {(props) => <EditHaras {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/createAdmin' component= {CreateAdmin}/>
+          <Route exact path='/admin/uploadmidia' render = {(props) => <UploadMidia {...props} user = {this.state.userAdm}/>}/>
 
 
         </Switch>

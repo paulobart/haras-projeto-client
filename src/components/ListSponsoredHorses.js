@@ -7,7 +7,7 @@ class ListSponsoredHorses extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "6071bd1245e7b01c9dc7de92",
+      id: props.user,
       sponsoredHorses: [],
       horse: "",
       check: false
