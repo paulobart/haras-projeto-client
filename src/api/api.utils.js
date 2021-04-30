@@ -169,6 +169,24 @@ class Api {
       throw Error(error)
     }
   }
+  getHaras = async (id) => {
+    console.log(id)
+    try {
+      const { data } = await this.api.get(`/haras/findharas/${id}`);
+      return data
+            } catch (error) {
+      throw Error(error)
+    }
+  }
+  updateHaras = async (id, payload) => {
+    console.log(id)
+    try {
+      const { data } = await this.api.put(`/haras/update/${id}`, payload)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 
 }
 export default new Api();

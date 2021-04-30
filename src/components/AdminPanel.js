@@ -76,9 +76,11 @@ class AdminPanel extends Component {
             <div className="botoes-admin-haras card-header mt-3 py-2">
             <div class="field is-grouped">
                 <p class="control">
+                <Link to="/admin/updateharas">
                     <button class="ml-2 button is-info" style={{width: 200}}>
                     Editar Haras
                     </button>
+                    </Link>
                 </p>
                 <p class="control">
                 <Link to="/admin/createAdmin"><button class="button is-info" style={{width: 200}}>

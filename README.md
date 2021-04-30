@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Haras Mustang 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Api/Front for Projects IronHack BootCamp Out/2020
 
-## Available Scripts
+HarasApi is a express rest api for manage a haras react website where the users can sponsor a horse and book a day use.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Admin´s area with full possibility to manage the haras information, plans details, send messages to sponsor and image uploads.
+- Sponsors area with a profile area with messages, videos and images, sponsored horses and a form to book day use.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project was created to conclusion of module 3 of IronHack BootCamp Out/2020
+Created by [Alison Paulino and Paulo Duarte]
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech
 
-### `npm test`
+Haras Api and Client uses:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [node.js]
+- [Express]
+- [React]
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone this repo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In the source folder add an .env file with this variables:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+MONGO_URI - for your atlas cluster or local mongodb
+TOKEN_SECRET - for your jwt secret
+EXPIRATION_AUTH_TOKEN - for setting your expiration time for jwt
 
-### `npm run eject`
+Install the dependencies and devDependencies and start the server.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+npm i
+npm run dev
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**`https://haras-api.herokuapp.com/`**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You can test with:
+**`https://haras-api.herokuapp.com/`**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The common endpoints are the following:
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+All end point except /auth need to be access with token on Authorization header
+| Method | EndPoint                  | Parameters                                      | Return Value                                                    |
+|--------|---------------------------|-------------------------------------------------|-----------------------------------------------------------------|
+| Post   | auth/login                | email, password                                 | User Logado                                                     |
+| Post   | auth/loginAdm             | email, password                                 | User Logado                                                     |
+| Post   | auth/signup               | email, nome, telefone, idade, password, imagem  | User Criado                                                     |
+| Post   | auth/signupAdm            | email, nome, telefone, idade, password, imagem  | User Criado                                                     |
+| Put    | auth/upadateAdm/:id       | nome, telefone, idade, password, imagem, id     | User Alterado                                                   |
+| Get    | auth/adm/:id              |                                                 | Administrador Encontrado                                        |
+| Post   | auth/delete/:id           |                                                 | User deletado                                                   |
+| Post   | haras/create              | nome, localização, telefone, email              | Haras Criado                                                    |
+| Get    | haras/:id                 |                                                 | Haras Encontrado                                                |
+| Put    | haras/update/:id          | nome, localização, telefone, email              | Haras Alterado                                                  |
+| Post   | haras/createPlan          | nome , data inicio, data fim, valor             | Plano Criado                                                    |
+| Put    | haras/editPlan/:id        | nome , data inicio, data fim, valor             | Plano Alterado                                                  |
+| Post   | haras/deletePlan/:id      |                                                 | Plano deletado                                                  |
+| Post   | haras/uploadmidia         | midia                                           | Arquivo enviado                                                 |
+| Post   | cavalo/create             | nome, filiação, cor, idade, image               | Cavalo Criado                                                   |
+| Put    | cavalo/update/:id         | nome, filiação, cor, idade, image               | Cavalo alterado                                                 |
+| Post   | cavalo/delete/:id         |                                                 | Cavalo deletado                                                 |
+| Get    | /profile                  |                                                 | User Logado - Mensagens e Mídias                                |
+| Get    | /listCavalos              |                                                 | Listar Cavalos                                                  |
+| Post   | /apadrinhar               | id, id_cavalo                                   | Sucess                                                          |
+| Get    | /listCavalos/apadrinhados |                                                 | Listar Cavalos Apadrinhados                                     |
+| Get    | /infocavalo               | id_cavalo                                       | Mostra info cavalo                                              |
+| Put    | /midias                   | [ url images, video ]                           | Mostra todas as imagens enviadas pelo administrador             |
+| Put    | /videos                   | [ url video]                                    | Mostra tos links de todos os videos enviadas pelo administrador |
