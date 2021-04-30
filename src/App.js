@@ -19,6 +19,7 @@ import ListEditHorse from "./components/ListEditHorse";
 import AdminLogin from "./components/AdminLogin";
 import CreateAdmin from "./components/CreateAdmin";
 import ListUpdatePlanos from "./components/ListUpdatePlanos";
+import AdminConversation from "./components/AdminConversation";
 
 class App extends Component {
 
@@ -71,6 +72,7 @@ class App extends Component {
           <Route exact path='/admin/criarplanos' component= {CreatePlanos}/>
           <Route exact path='/admin/editarplanos' component= {ListUpdatePlanos}/>
           <Route exact path='/admin' component= {AdminPanel}/>
+          <Route exact path='/admin/conversas' component= {AdminConversation}/>
           
           <Route exact path='/admin/createAdmin' component= {CreateAdmin}/>
 

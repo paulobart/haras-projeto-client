@@ -111,9 +111,10 @@ class AdminPanel extends Component {
                     </button>
                 </p>
                 <p class="control">
-                    <button class="button is-info" style={{width: 200}}>
+                   <Link to="/admin/conversas"> <button class="button is-info" style={{width: 200}}>
                     Conversas
                     </button>
+                   </Link> 
                 </p>
                </div>
             </div>
