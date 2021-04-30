@@ -22,13 +22,14 @@ class Midia extends Component {
         console.log(this.props)
         try {
             const infoProfile = await apiUtils.getProfile(this.props.user)
-            const midias = infoProfile.infos.refPlanHorse_id[8].horse_id.midiasImg
+            console.log(infoProfile)
+            const midias = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasImg
             const copiaMidias = [...this.state.midias];
             midias.forEach(midia => {
                 midia[0].slice(0,95);
                 copiaMidias.push(midia)
             });
-            const videos = infoProfile.infos.refPlanHorse_id[8].horse_id.midiasVideo
+            const videos = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasVideo
             const copiaMidiasVideo = [... this.state.midiasVideo]
              videos.forEach(video => {
                 video[0].slice(0,95);

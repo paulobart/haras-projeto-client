@@ -9,7 +9,7 @@ class EditHaras extends Component {
     phone: "",
     email: "",
     localization: "",
-    haras_id: "608b3cccc52ff00ce0e7452c",
+    haras_id: "608b38c0f4ef20001517adb5",
   };
 
   componentDidMount = () => {

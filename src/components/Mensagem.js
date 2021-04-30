@@ -9,9 +9,10 @@ class Mensagem extends Component {
     super(props);
     this.scrollToTop = this.scrollToTop.bind(this);
     this.state = {
-      id: "606fb9144356bf0877c1ff74",
+      id: props.user.id,
       message: [],
-      bodyMessage:""
+      bodyMessage:"",
+      name: props.user.name
     };
   }
   componentDidMount = () =>{
@@ -45,7 +46,7 @@ class Mensagem extends Component {
     try {
       const payload ={
         bodyMessage: this.state.bodyMessage,
-        author: "sponsor",
+        author: 'sponsor',
         sponsor_id: this.state.id
       }
       console.log(this.state.message)
@@ -66,14 +67,14 @@ class Mensagem extends Component {
     return (
       <div className="box " >
       <div className=" is-flex is-flex-direction-column" style={{width: "100%", height: "70vh", overflow: "auto"}}>
-        {this.state.message.map(function (message) {
+        {this.state.message.map((message) => {
           return (
             <div className="">
-              {message.author == "sponsor" ? (
+              {message.author === 'sponsor' ? (
                 <div>
                   <figure className="media-left is-pulled-right">
                     <p className="image is-64x64 ">
-                      <img src={sponsorImg} />
+                      <img src={this.props.user.imageUrl} />
                     </p>
                   </figure>
                   <div className="media-content ">
@@ -82,7 +83,7 @@ class Mensagem extends Component {
                       <br/>
                       <br/>
                       <br/>
-                        <strong className=" is-pulled-right">{message.author}</strong>
+                        <strong className=" is-pulled-right">{this.props.user.name}</strong>
                           <br/>
                        <div className="is-12 is-pulled-right is-family-sans-serif " > {message.bodyMessage}</div>
                         <br/>
@@ -100,7 +101,7 @@ class Mensagem extends Component {
                   <div className="media">
                     <div className="content">
                       <p>
-                        <strong className=" is-pulled-left">{message.author}</strong>
+                        <strong className=" is-pulled-left">Haras</strong>
                         <br /> 
                         <div className=" is-pulled-left is-family-sans-serif">{message.bodyMessage}</div>
                         <br />
