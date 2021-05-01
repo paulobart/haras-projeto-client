@@ -55,7 +55,7 @@ class EditHorse extends Component {
             </div>
             <div className="field">
             <div className="control">
-                <input className="input" value={this.props.horse.age} type="age" name="age" onChange={this.props.handleInput}/>
+                <input className="input" value={this.props.horse.age} type="number" name="age" onChange={this.props.handleInput}/>
               </div>
               
             </div>

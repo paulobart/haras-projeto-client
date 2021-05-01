@@ -7,23 +7,30 @@ class Login extends Component {
   state = {
     email: "",
     password: "",
+    message: "",
   };
 
   handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const { password, email } = this.state;
+      if (!password || !email) {
+      this.setState({
+        message: "Email e senha são obrigatórios.",
+      });
+      return;
+      }
       const userDB = await apiUtils.login(this.state);
-      
       this.props.user(userDB)
       this.setState({
         email: "",
         password: "",
       });
-
-      
-      this.props.history.push("/profile")
+    this.props.history.push("/profile")
     } catch (error) {
-      console.error(error);
+      this.setState({
+        message: "Email ou senha não conferem."
+      });
     }
   };
 
@@ -58,6 +65,7 @@ class Login extends Component {
                   <input className="input" value={this.state.password} type="password" placeholder="********" name="password" onChange={this.handleInput}/>
                 </div>
               </div>
+              <p className="has-text-danger">{this.state.message}</p>
               <button className="button is-fullwidth" className="button is-info" onClick={this.handleSubmit}>
                 <p>Login</p>
               </button>

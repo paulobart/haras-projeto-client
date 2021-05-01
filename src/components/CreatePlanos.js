@@ -10,7 +10,7 @@ class CreatePlanos extends Component {
         dayUse:"",
         foto:"",
         video:"",
-       
+        message: "",
     }
 handleInput = (event) => {
     const { name, value } = event.target;
@@ -37,6 +37,13 @@ handleInput = (event) => {
             video: this.state.video,
             dayUse: this.state.dayUse
         }
+        const {planos, descricao, price, foto, video, dayUse} = this.state
+        if (!planos|| !descricao || !price || !foto || !video || !dayUse) {
+            this.setState({
+                message: "Todos os campos são obrigatórios",
+            });
+            return;
+        }    
       await apiUtils.createPlan(payload);
       this.setState({
         planos:"",
@@ -45,8 +52,9 @@ handleInput = (event) => {
         dayUse:"",
         foto:"",
         video:"",
+        
     })
- 
+    this.props.history.push("/adminpainel")
     } catch (error) {
      console.log(error)
     }
@@ -156,6 +164,7 @@ handleInput = (event) => {
                              <span className="has-text-info has-text-weight-semibold ml-2 "> Video: </span>
                             <input className="ml-3" type="text" placeholder="EX: 2 videos" name="video" value={this.state.video} onChange={this.handleInput}/>
                 </div> 
+                <p className="has-text-danger">{this.state.message}</p>
                 <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Criar Planos</button>
                  
             </div>

@@ -9,6 +9,7 @@ const initialState = {
         dayUse:"",
         foto:"",
         video:"",
+        message: "",
 };
 
 class UpdatePlan extends Component {
@@ -39,6 +40,13 @@ class UpdatePlan extends Component {
                     video: this.state.video,
                     dayUse: this.state.dayUse
                 }
+                const {planos, descricao, price, foto, video, dayUse} = this.state
+                if (!planos|| !descricao || !price || !foto || !video || !dayUse) {
+                    this.setState({
+                        message: "Todos os campos são obrigatórios",
+                    });
+                    return;
+                }    
                 await apiUtils.editPlan(this.props.plan._id,payload);
                 this.setState({
                     planos:"",
@@ -47,6 +55,7 @@ class UpdatePlan extends Component {
                     dayUse:"",
                     foto:"",
                     video:"",
+                    message: "plano alterado com sucesso"
                 })
                 this.props.getListPlan()
         } catch (error) {
@@ -168,6 +177,7 @@ class UpdatePlan extends Component {
                              <span className="has-text-info has-text-weight-semibold ml-2 "> Video: </span>
                             <input className="ml-3" type="text" placeholder="EX: 2 videos" name="video" value={this.state.video} onChange={this.handleInput}/>
                 </div> 
+                <p className="has-text-danger">{this.state.message}</p>
                 <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Salvar alterações Planos</button>
                  
             </div>
