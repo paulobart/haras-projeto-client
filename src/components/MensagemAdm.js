@@ -36,7 +36,7 @@ class MensagemAdm extends Component {
     try {
       const payload ={
         bodyMessage: this.state.bodyMessage,
-        author: 'sponsor',
+        author: 'admin',
         sponsor_id: this.props.user._id
       }
       console.log(this.state.message)
