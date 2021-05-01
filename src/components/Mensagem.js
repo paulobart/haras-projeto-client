@@ -132,7 +132,7 @@ class Mensagem extends Component {
             </div>
             <div className="field">
               <p className="control">
-                <button  onClick={this.handleSubimitMessage}>Post comment</button>
+                <button  onClick={this.handleSubimitMessage}>Enviar Mensagem</button>
               </p>
               <a onClick={this.scrollToTop}>To the top!</a>
             </div>
