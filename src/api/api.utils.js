@@ -53,7 +53,6 @@ class Api {
   }
 
   getProfile = async (id) => {
-    console.log(id)
     try {
       const { data } = await this.api.get(`/support/infoprofile/${id}`)
       return data
@@ -169,6 +168,17 @@ class Api {
       throw Error(error)
     }
   }
+  listSponsor = async () =>{
+    try {
+      const  { data } = await this.api.get('/auth/listsponsor')
+      console.log(data)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+
+
   getHaras = async (id) => {
     console.log(id)
     try {

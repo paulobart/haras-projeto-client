@@ -9,21 +9,24 @@ class Midia extends Component {
     state = {
             midias: [],
             midiasVideo: [],
-            url:""
+            url:"",
         }
     
    
-     componentDidMount = async () =>{        
+     componentDidMount = async () =>{  
+           
         this.getInfo()
     
   }
 
      getInfo = async () => {
-        console.log(this.props)
+        
         try {
             const infoProfile = await apiUtils.getProfile(this.props.user)
+
             console.log(infoProfile)
             const midias = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasImg
+
             const copiaMidias = [...this.state.midias];
             midias.forEach(midia => {
                 midia[0].slice(0,95);
