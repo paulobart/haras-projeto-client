@@ -1,112 +1,61 @@
 import React, { Component } from "react";
+import apiUtils from '../api/api.utils';
+
 
 class Planos extends Component {
+  state = {
+    plans:[],
+    
+}
+
+componentDidMount = ()=>{
+  this.getListPlan();
+}
+
+  getListPlan = async ()=>{
+    try {
+        const plansList = await apiUtils.listPlan()
+        this.setState({
+            plans: plansList,
+        })
+    } catch (error) {
+        console.error(error)
+    }
+  }
   render() {
     return (
       <div>
-        <div className="mt-6 mr-6 ml-6">
-          <div className="box is-flex is-justify-content-space-around">
-            <div className="column is-2 card">
+        <div className="">
+          <div className="box is-flex is-justify-content-space-around ">
+        {this.state.plans.map((plan) => {
+        return (
+            <div className="mt-6 mr-1 ml-1 is-2 card">
               <header className="card-header has-background-info">
-                <p className="card-header-title has-text-white">Mensal</p>
+                <p className="card-header-title has-text-white">{plan.name}</p>
               </header>
               <div className="card-content">
-                <div className="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
+                <div className="content is-2">
+                  {plan.description}
                   <br/>
                   <br/>
                   <strong className="has-text-info">Valor</strong>
-                  <p>R$250,00</p>
+                  <p>{plan.price}</p>
                   <strong className="has-text-info">Benefícios</strong>
-                  <div><span className="has-text-info">✔</span> 1 day use por mês</div>
-                  <div><span className="has-text-info">✔</span> 1 Foto diária</div>
-                  <div><span className="has-text-info">✔</span> 1 Vídeo semanal</div>
+                  <div><span className="has-text-info">✔</span> {plan.dayUse} day use por mês</div>
+                  <div><span className="has-text-info">✔</span> {plan.foto} Foto diária</div>
+                  <div><span className="has-text-info">✔</span> {plan.video} Vídeo semanal</div>
                 </div>
               </div>
-              <footer className="card-footer">
+              <footer className="card-footer is-1">
                 <a href="#" className="card-footer-item has-text-info">
                   Comprar Agora!
                 </a>
               </footer>
-            </div>
-            <div className="column is-2 card">
-              <header className="card-header has-background-info">
-                <p className="card-header-title has-text-white">Bimestral</p>
-              </header>
-              <div className="card-content">
-                <div className="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
-                  <br/>
-                  <br/>
-                  <strong className="has-text-info">Valor</strong>
-                  <p>R$350,00</p>
-                  <strong className="has-text-info">Benefícios</strong>
-                  <div><span className="has-text-info">✔</span> 2 day use por mês</div>
-                  <div><span className="has-text-info">✔</span> 2 Foto diária</div>
-                  <div><span className="has-text-info">✔</span> 2 Vídeo semanal</div>
-                </div>
               </div>
-              <footer className="card-footer">
-                <a href="#" className="card-footer-item has-text-info">
-                  Comprar Agora!
-                </a>
-              </footer>
+            );
+          })}
             </div>
-
-            <div className="column is-2 card">
-              <header className="card-header has-background-info">
-                <p className="card-header-title has-text-white">Semestral</p>
-              </header>
-              <div className="card-content">
-                <div className="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
-                  <br />
-                  <br/>
-                  <strong className="has-text-info">Valor</strong>
-                  <p>R$450,00</p>
-                  <strong className="has-text-info">Benefícios</strong>
-                  <div><span className="has-text-info">✔</span> 4 day use por mês</div>
-                  <div><span className="has-text-info">✔</span> 4 Foto diária</div>
-                  <div><span className="has-text-info">✔</span> 3 Vídeo semanal</div>
-                </div>
-              </div>
-              <footer className="card-footer">
-                <a href="#" className="card-footer-item has-text-info">
-                  Comprar Agora!
-                </a>
-              </footer>
-            </div>
-
-            <div className="column is-2 card">
-              <header className="card-header has-background-info">
-                <p className="card-header-title has-text-white">Anual</p>
-              </header>
-              <div className="card-content">
-                <div className="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
-                  <br />
-                  <br/>
-                  <strong className="has-text-info">Valor</strong>
-                  <p>R$500,00</p>
-                  <strong className="has-text-info">Benefícios</strong>
-                  <div><span className="has-text-info">✔</span> 8 day use por mês</div>
-                  <div><span className="has-text-info">✔</span> 4 Foto diária</div>
-                  <div><span className="has-text-info">✔</span> 6 Vídeo semanal</div>
-                </div>
-              </div>
-              <footer className="card-footer">
-                <a href="#" className="card-footer-item has-text-info">
-                  Comprar Agora!
-                </a>
-              </footer>
-            </div>
-            
           </div>
-        </div>
       </div>
     );
   }

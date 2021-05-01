@@ -38,6 +38,14 @@ handleInput = (event) => {
             dayUse: this.state.dayUse
         }
       await apiUtils.createPlan(payload);
+      this.setState({
+        planos:"",
+        descricao:"",
+        price:"",
+        dayUse:"",
+        foto:"",
+        video:"",
+    })
  
     } catch (error) {
      console.log(error)
@@ -90,6 +98,7 @@ handleInput = (event) => {
                          <span className="has-text-info has-text-weight-semibold  "> Day Use Mensal: </span>
                             <div className="select is-info ml-2" >
                                 <select name="dayUse" value={this.state.dayUse} onChange={this.handleInput}> 
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -107,6 +116,7 @@ handleInput = (event) => {
                          <span className="has-text-info has-text-weight-semibold  "> Foto: </span>
                             <div className="select is-info ml-2">
                                 <select class="select is-info ml-2" name="foto" value={this.state.foto} onChange={this.handleInput}>
+                                    <option value="0">0</option>    
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -122,7 +132,8 @@ handleInput = (event) => {
                 <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold "> Video: </span>
                             <div className="select is-info ml-2">
-                                <select className="has-text-info has-text-weight-semibold" name="video" value={this.state.video} onChange={this.handleInput}>
+                                <select className="select is-info ml-2" name="video" value={this.state.video} onChange={this.handleInput}>
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -136,14 +147,14 @@ handleInput = (event) => {
                                <span className="ml-2">Video</span>
                 </div>
                 
-                   <div className="mt-3 is-flex">
                          <span className="has-text-info has-text-weight-semibold  "> Personalizado: </span>
+                   <div className="mt-3 is-flex">
                             <span className="has-text-info has-text-weight-semibold  ml-2" > Dia: </span>
-                            <input className="ml-3" type="text" placeholder="EX: semanal" name="dayUse" value={this.state.dayUse} onChange={this.handleInput}/>
+                            <input className="ml-3" type="text" placeholder="EX: 2 dias" name="dayUse" value={this.state.dayUse} onChange={this.handleInput}/>
                             <span className="has-text-info has-text-weight-semibold ml-2 "> Foto: </span>
-                            <input className="ml-3" type="text" placeholder="EX: semanal" name="foto" value={this.state.foto} onChange={this.handleInput}/>
+                            <input className="ml-3" type="text" placeholder="EX: 3 fotos" name="foto" value={this.state.foto} onChange={this.handleInput}/>
                              <span className="has-text-info has-text-weight-semibold ml-2 "> Video: </span>
-                            <input className="ml-3" type="text" placeholder="EX: semanal" name="video" value={this.state.video} onChange={this.handleInput}/>
+                            <input className="ml-3" type="text" placeholder="EX: 2 videos" name="video" value={this.state.video} onChange={this.handleInput}/>
                 </div> 
                 <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Criar Planos</button>
                  
