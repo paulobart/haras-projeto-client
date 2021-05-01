@@ -34,6 +34,12 @@ class Signup extends Component {
             });
             return;
         }
+        if (!password || !confirmPassword || !name || !email || !phone || !age) {
+          this.setState({
+              message: "Todos os campos são obrigatórios",
+          });
+          return;
+      }
         await this.handleUpload()
         const { imagem } = this.state;
       this.setState( initialState );

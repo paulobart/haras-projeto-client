@@ -5,11 +5,19 @@ class AdminLogin extends Component {
   state = {
     email: "",
     password: "",
+    message: "",
   };
 
   handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const { password, email } = this.state;
+      if (!password || !email) {
+      this.setState({
+        message: "Todos os campos são obrigatórios",
+      });
+      return;
+      }
       const userDB = await apiUtils.loginAdmin(this.state);
       this.props.userAdm(userDB);
       this.setState({
@@ -20,6 +28,9 @@ class AdminLogin extends Component {
       this.props.history.push("/adminpainel");
     } catch (error) {
       console.error(error);
+      this.setState({
+        message: "Email ou senha não conferem."
+      });
     }
   };
 
@@ -53,6 +64,7 @@ class AdminLogin extends Component {
                   <input className="input" value={this.state.password} type="password" placeholder="********" name="password" onChange={this.handleInput} />
                 </div>
               </div>
+              <p className="has-text-danger">{this.state.message}</p>
               <button className="button is-fullwidth is-info" onClick={this.handleSubmit} >
                 <p>Login</p>
               </button>

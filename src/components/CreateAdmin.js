@@ -8,7 +8,8 @@ const initialState = {
     phone: "",
     imagem: "",
     imagemFile: "",
-    password: ""
+    password: "",
+    message: "",
 };
 
 class CreateAdmin extends Component {
@@ -28,6 +29,12 @@ class CreateAdmin extends Component {
             await this.handleUpload()
             const { imagem } = this.state;
             this.setState(initialState)
+            if (!password || !name || !email || !phone || !age) {
+              this.setState({
+                  message: "Todos os campos são obrigatórios",
+              });
+              return;
+          }
             await apiUtils.newAdmin({name, age, email, phone, password, imageUrl: imagem});
             
         } catch (error) {
@@ -107,6 +114,7 @@ class CreateAdmin extends Component {
             </div>
           </div>
           </div>
+          <p className="has-text-danger">{this.state.message}</p>
           <button className="button is-fullwidth" className="button is-info" onClick={this.handleSubmit} style={{width: "100%"}}>
             <p>Cadastre-se</p>
           </button>

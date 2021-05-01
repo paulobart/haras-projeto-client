@@ -10,7 +10,8 @@ const initialState = {
     behavior: "",
     imagem: "",
     imagemFile: "",
-    register: ""
+    register: "",
+    message: "",
 };
 
 class HorseRegister extends Component {
@@ -27,11 +28,18 @@ class HorseRegister extends Component {
         event.preventDefault()
         try {
             const {name, age, affiliation, color, breed, behavior, register } = this.state;
+            if (!name || !age || !affiliation || !color || !breed || !behavior || !register) {
+              this.setState({
+                  message: "Todos os campos são obrigatórios",
+              });
+              return;
+          }
+          
             await this.handleUpload()
             const { imagem } = this.state;
             this.setState(initialState)
             await apiUtils.newHorse({name, age, affiliation, color, breed, behavior, register, imageUrl: imagem});
-            
+            this.props.history.push("/adminpainel")
         } catch (error) {
             console.error(error)
         }
@@ -73,7 +81,7 @@ class HorseRegister extends Component {
             </div>
             <div className="field">
             <div className="control">
-                <input className="input" value={this.state.age} type="age" placeholder="Idade" name="age" onChange={this.handleInput}/>
+                <input className="input" value={this.state.age} type="number" placeholder="Idade" name="age" onChange={this.handleInput}/>
               </div>
             </div>
             <div className="field">
@@ -99,7 +107,7 @@ class HorseRegister extends Component {
             </div>
             <div className="field">
                          <div className="control">
-                <input className="input" value={this.state.register} type="register" placeholder="Número do Registro" name="register" onChange={this.handleInput} />
+                <input className="input" value={this.state.register} type="number" placeholder="Número do Registro" name="register" onChange={this.handleInput} />
               </div>
             </div>
           </div>
@@ -120,6 +128,7 @@ class HorseRegister extends Component {
             </div>
           </div>
           </div>
+          <p className="has-text-danger">{this.state.message}</p>
           <button className="button is-fullwidth" className="button is-info" onClick={this.handleSubmit} style={{width: "100%"}}>
             <p>Cadastre Novo Cavalo</p>
           </button>

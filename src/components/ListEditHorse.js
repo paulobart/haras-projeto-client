@@ -46,6 +46,7 @@ handleEditHorse = async (event) => {
     event.preventDefault()
     try {
         //const {name, age, affiliation, color, breed, behavior} = this.state;
+        
         await this.handleUpload()
         const { imagem } = this.state;
         const editedHorseTemp = {...this.state.horse}
