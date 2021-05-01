@@ -176,6 +176,49 @@ class Api {
     } catch (error) {
       throw Error(error)
     }
-  } 
+  }
+
+
+  getHaras = async (id) => {
+    console.log(id)
+    try {
+      const { data } = await this.api.get(`/haras/findharas/${id}`);
+      return data
+            } catch (error) {
+      throw Error(error)
+    }
+  }
+  updateHaras = async (id, payload) => {
+    console.log(id)
+    try {
+      const { data } = await this.api.put(`/haras/update/${id}`, payload)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+  sendVideo = async (id, video) => {
+    const midiaData = new FormData();
+    midiaData.append( 'video', video )
+    try {
+      const { data } = await this.api.post(`/horse/sendVideo/${id}`, midiaData)
+      console.log(data)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+  sendImg = async (id, imagem) => {
+    const midiaData = new FormData();
+    midiaData.append( 'image', imagem )
+    try {
+      const { data } = await this.api.post(`/horse/sendImg/${id}`, midiaData)
+      console.log(data)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+
 }
 export default new Api();

@@ -4,12 +4,12 @@ import sponsorImg from "../assets/sponsor.jpg";
 import adminImg from "../assets/admin.jpg";
 import {Events, animateScroll as scroll} from 'react-scroll'
 
-class Mensagem extends Component {
+class MensagemAdm extends Component {
   constructor(props) {
     super(props);
     this.scrollToTop = this.scrollToTop.bind(this);
     this.state = {
-      id: props.user.id,
+      id: props.user._id,
       message: [],
       bodyMessage:"",
       name: props.user.name
@@ -142,4 +142,4 @@ class Mensagem extends Component {
     );
   }
 }
-export default Mensagem;
+export default MensagemAdm;

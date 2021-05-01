@@ -100,17 +100,16 @@ class Profile extends Component {
                                 <HorseList/>
                                 ) : 
                                  this.state.page == "Cavalos Apadrinhados" ? (
-                                <ListSponsoredHorses/> 
+                                <ListSponsoredHorses user={ this.props.user.id }/> 
                                 ) : 
-                                  this.state.page == "Nome Sponsor" ? (
-                                <div className="columns" style={{ marginTop: -90 }}>
-                                <Midia user={ this.props.user.id }/>
-                                <Mensagem user={ this.props.user.id }/>
-                                </div>
-                                ) :
-                                this.state.page == "Reserva" ? (
+                                  this.state.page == "Reserva" ? (
                                <SponsoredHorses namePage={ this.handleInputButton }/> 
-                                ) : null }
+                                ) : (
+                                    <div className="columns" style={{ marginTop: -90 }}>
+                                    <Midia user={ this.props.user.id }/>
+                                    <Mensagem user={ this.props.user }/>
+                                    </div>
+                                    ) }
                         </div>
                     </div>
                 </div>  
