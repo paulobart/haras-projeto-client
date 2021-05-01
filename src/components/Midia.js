@@ -15,7 +15,7 @@ class Midia extends Component {
    
      componentDidMount = async () =>{  
            
-        this.getInfo()
+       this.getInfo()
     
   }
 
@@ -25,25 +25,26 @@ class Midia extends Component {
             const infoProfile = await apiUtils.getProfile(this.props.user)
 
             console.log(infoProfile)
-            const midias = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasImg
+            // const copiaMidias = this.props.horse.midiasImg
+            
 
-            const copiaMidias = [...this.state.midias];
-            midias.forEach(midia => {
-                midia[0].slice(0,95);
-                copiaMidias.push(midia)
-            });
-            const videos = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasVideo
-            const copiaMidiasVideo = [... this.state.midiasVideo]
-             videos.forEach(video => {
-                video[0].slice(0,95);
-                copiaMidiasVideo.push(video)
-            });
-          this.setState({
-                midias: copiaMidias,
-                midiasVideo: copiaMidiasVideo,
-                url:copiaMidiasVideo[0],
-            });
-           
+            // const copiaMidias = [...this.state.midias];
+            // midias.forEach(midia => {
+            //     midia[0].slice(0,95);
+            //     copiaMidias.push(midia)
+            // });
+        //     const videos = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasVideo
+        //     const copiaMidiasVideo = [... this.state.midiasVideo]
+        //      videos.forEach(video => {
+        //         video[0].slice(0,95);
+        //         copiaMidiasVideo.push(video)
+        //     });
+        //   this.setState({
+        //         midias: this.props.horse,
+        //         midiasVideo: copiaMidiasVideo,
+        //         url:copiaMidiasVideo[0],
+        //     });
+           this.props.getMidia(infoProfile)
            } catch (error) {
             console.error(error)
         }
@@ -66,9 +67,9 @@ class Midia extends Component {
             <div className="column is-8 box mr-1"> 
                 <div className="container-imagens-mensagens ">
                     <div className="componentes-imagens">
-                      <FrameVideo url={this.state.url} />
+                      <FrameVideo url={this.props.url} />
                        <div className=" box is-flex is-flex-wrap-wrap is-justify-content-flex-start">
-                       {this.state.midiasVideo.map((video)=>{
+                       {this.props.horseVideo.map((video)=>{
                            return(
                         <div >
                             <figure className=" image mr-2 is-128x128">
@@ -85,7 +86,7 @@ class Midia extends Component {
                        
                            
                                 <div className=" box is-flex is-flex-wrap-wrap is-justify-content-flex-start" >
-                                    {this.state.midias.map((image)=>{
+                                    {this.props.horse.map((image)=>{
                                      return(
                                          
                                             <div className=" image mr-1" > 

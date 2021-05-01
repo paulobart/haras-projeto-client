@@ -14,11 +14,16 @@ class Profile extends Component {
     state = {
         page: "Nome Sponsor",
         button: "",
+        horses:[],
+        horse:"",
+        check: false,
+        midias: [],
+        midiasVideo: [],
+        url:"",
     }
 
        
      handleInput = async (event) =>{
-         console.log(event.target.innerHTML)
          try {
              this.setState({
                  page: event.target.innerHTML 
@@ -29,7 +34,6 @@ class Profile extends Component {
      } 
 
      handleInputButton = async (event) =>{
-        console.log(event.target.name)
         try {
             this.setState({
                 page: event.target.name
@@ -38,10 +42,52 @@ class Profile extends Component {
            
        }
     } 
+    getMidia = async (midia)=>{
+        try {
+            console.log(midia.infos.refPlanHorse_id)
+            this.setState({
+                horses:midia.infos.refPlanHorse_id
+            })
+        } catch (error) {
+            
+        }
+    }
+    getHorseToIndex = (index)=>{
+        console.log(index)
+    }
+    getHorseToEdit = async (index) => {
+    try {
+        console.log("oi")
+        const imagens = this.state.horses[index].horse_id.midiasImg
+        const copiaMidias = []
+        
+        imagens.forEach(midia => {
+            midia.slice(0,95);
+            copiaMidias.push(midia)
+        });
+        console.log(imagens)
+        const videos = this.state.horses[index].horse_id.midiasVideo
+        const copiaMidiasVideo = []
+        videos.forEach(video => {
+           video[0].slice(0,95);
+           copiaMidiasVideo.push(video)
+       });
+       console.log(videos)
+        this.setState({
+        horse: this.state.horses[index],
+        midias: copiaMidias,
+        midiasVideo: copiaMidiasVideo,
+        url:copiaMidiasVideo[0],
+        check: true
+        })
+        } catch (error) {
+    }
+}
 
     render() {
         return (
             <div>
+                
               <div className="container">
                 <div className="notification">
                     <div className="container-geral" style={{marginTop: -90} }>
@@ -94,6 +140,20 @@ class Profile extends Component {
                             </div>
                         </div>
                     </div>
+                    
+                    <span>Escolha qual de seus cavalos gostaria de ver as midias:</span>
+                    
+                    <select onChange={()=>this.getHorseToEdit()}> 
+                    {this.state.horses.map((horse, index) => {
+                  return (
+                    <option name="horse"  value="selecione um cavalo" onChange={()=>this.getHorseToIndex(index)} >{horse.horse_id.name}</option>
+                    //  <label key={horse._id} className="radio panel-block control ml-1">
+                    //     <input type="radio" name="horse" onChange={()=>this.getHorseToEdit(index)}/>
+                    //     <span className="has-text-info has-text-weight-semibold ml-3"> {horse.horse_id.name} </span>
+                    //     </label>
+                    );
+                })}
+                </select>
                         <section className="section mt-5"></section>
                         <div>
                             { this.state.page == "Lista Cavalos" ? (
@@ -106,7 +166,7 @@ class Profile extends Component {
                                <SponsoredHorses namePage={ this.handleInputButton }/> 
                                 ) : (
                                     <div className="columns" style={{ marginTop: -90 }}>
-                                    <Midia user={ this.props.user.id }/>
+                                    <Midia user={ this.props.user.id } getMidia={this.getMidia} horse={this.state.midias} horseVideo={this.state.midiasVideo} url={this.state.url} />
                                     <Mensagem user={ this.props.user }/>
                                     </div>
                                     ) }
