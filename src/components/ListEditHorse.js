@@ -101,7 +101,7 @@ handleInput = (event) => {
       {this.state.horses.map((horse, index) => {
         return (
               
-              <label key={horse._id} className="radio panel-block control">
+              <label key={horse._id} className="radio panel-block control ml-1">
                 <input type="radio" name="horse" onChange={()=>this.getHorseToEdit(index)}/>
                 <span className="has-text-info has-text-weight-semibold ml-3"> {horse.name} </span>
               </label>

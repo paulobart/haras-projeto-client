@@ -49,7 +49,7 @@ getPlanToEdit = async (index) => {
               {this.state.plans.map((plan, index) => {
         return (
               
-              <label key={plan._id} className="radio panel-block control">
+              <label key={plan._id} className="radio panel-block control ml-1">
                 <input type="radio" name="plan" onChange={()=>this.getPlanToEdit(index)}/>
                 <span className="has-text-info has-text-weight-semibold ml-3"> {plan.name} </span>
               </label>
