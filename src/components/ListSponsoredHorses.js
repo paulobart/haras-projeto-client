@@ -50,7 +50,7 @@ class ListSponsoredHorses extends Component {
       {this.state.sponsoredHorses.map((horse, index) => {
         return (
               
-              <label key={horse.id} className="radio panel-block control">
+              <label key={horse.id} className="radio panel-block control ml-2">
                 <input type="radio" name="horse" onChange={()=>this.getSponsoredHorse(index)}/>
                 <span className="has-text-info has-text-weight-semibold ml-3"> {horse.horse_id.name} </span>
               </label>
