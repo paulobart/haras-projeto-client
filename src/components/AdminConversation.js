@@ -3,7 +3,8 @@ import apiUtils from '../api/api.utils';
 import sponsorImg from '../assets/sponsor.jpg';
 import adminImg from '../assets/admin.jpg';
 import { Events, animateScroll as scroll } from 'react-scroll';
-import Mensagem from './MensagemAdm';
+import MensagemAdm from './MensagemAdm';
+
 
 class AdminConversation extends Component {
 	constructor(props) {
@@ -13,15 +14,17 @@ class AdminConversation extends Component {
 			sponsors: [],
 			sponsor: '',
 			check: false,
-			id: '',
+			id:"",
+      message: [],
 			
 		};
 	}
 
 	componentDidMount = () => {
 		this.getSponsor();
+    this.loadState();
 	};
-
+  
 	getSponsor = async () => {
 		try {
 			console.log('getsponsor');
@@ -34,83 +37,72 @@ class AdminConversation extends Component {
 			console.error(error);
 		}
 	};
+  loadState = async ()=>{
+    try {
+      this.setState({
+        sponsor: this.state.sponsors[0],
+        check: true,
+        id: this.state.sponsors[0]._id,
+      });
+    } catch (error) {
+      
+    }
+  }
+  
 	getSponsorEdit = (index) => {
-		this.setState({
+  this.setState({
 			sponsor: this.state.sponsors[index],
 			check: true,
 			id: this.state.sponsors[index]._id,
 		});
+    this.getInfo();
 
-	// 	Events.scrollEvent.register('begin', function () {
-	// 		console.log('begin', arguments);
-	// 	});
-
-	// 	Events.scrollEvent.register('end', function () {
-	// 		console.log('end', arguments);
-	// 	});
-	// };
-	// scrollToTop() {
-	// 	scroll.scrollToTop();
-	// }
-
-	// getInfo = async () => {
-	// 	try {
-	// 		const message = await apiUtils.getMessage(this.state.sponsor.id);
-	// 		const copyMessage = message.message_id;
-	// 		this.setState({
-	// 			message: copyMessage,
-	// 		});
-	// 	} catch (error) {
-	// 		console.error(error);
-	// 	}
-	// };
-	// handleSubimitMessage = async () => {
-	// 	try {
-	// 		const payload = {
-	// 			bodyMessage: this.state.bodyMessage,
-	// 			author: 'sponsor',
-	// 			sponsor_id: this.state.id,
-	// 		};
-	// 		console.log(this.state.message);
-	// 		await apiUtils.sendMessage(payload);
-	// 		this.getInfo();
-	// 	} catch (error) {
-	// 		console.error(error);
-	// 	}
-	// };
-	// handleInput = (event) => {
-	// 	const { name, value } = event.target;
-	// 	this.setState({
-	// 		[name]: value,
-	// 	});
 	};
+  getInfo = async () => {
+    
+    try {
+      console.log(this.state.sponsor._id);
+      const messageProfile = await apiUtils.getMessage(this.state.sponsor._id);
+      const copyMessageProfile = messageProfile.message_id;
+      this.setState({
+        message: copyMessageProfile,
+      });
+    
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 	render() {
 		return (
-			<div className="geral container is-fullhd ">
-				<div className="box info-admin is-flex ">
-					<div>
+
+			<div className="geral box container is-fullhd ml-6 mt-6" >
+        <div className="2 paineis columns">
+				<div className="box info-admin is-flex column mt-4">
+					<div className="box info-admin column"style={{marginTop: -12}}>
 						<div className="foto-admin ">
 							<div className="imagem-header">
 								<figure className="image is-128x128">
-									<img src={adminImg} />
+									<img src={this.props.user.imageUrl} alt="imagem" />
 								</figure>
 							</div>
 						</div>
 						<div className="dados-admin"></div>
-						<p className="card-header card-header-title is-size-4 has-text-info"></p>
-						<p className="card-header card-header-title is-size-6 has-text-info"> E-mail:</p>
-						<p className="card-header card-header-title is-size-6 has-text-info"> Telefone:</p>
+						<p className="card-header card-header-title is-size-4 has-text-info"> Nome: {this.props.user.name}</p>
+						<p className="card-header card-header-title is-size-6 has-text-info"> E-mail: {this.props.user.email} </p>
+						<p className="card-header card-header-title is-size-6 has-text-info"> Telefone: {this.props.user.phone}</p>
 					</div>
-					<div style={{ marginLeft: '50%' }}>
-						<div className="box is-flex is-flex-direction-column is-align-content-flex-start">
+          
+					<div className="painel column is-8 is-flex is-flex-direction-column">
+            <div className="lista sponsor">
+						<div className="box  is-align-content-flex-start">
 							<div>
-								<p className="card-header-title is-size-12 has-text-info">Enviar Mensagem</p>
+								<p className="card-header-title is-size-12 has-text-info">Ver Conversa</p>
 							</div>
 
 							{this.state.sponsors.map((sponsor, index) => {
 								return (
-									<label key={sponsor._id} className="radio panel-block control">
+									<label key={sponsor._id} className="radio panel-block control ml-2">
 										<input
 											type="radio"
 											name="sponsor"
@@ -125,9 +117,13 @@ class AdminConversation extends Component {
 							})}
 						</div>
 					</div>
-					<MensagemAdm user={this.state.sponsor}/>
+          <div className="mensagem">
+          <MensagemAdm user={this.state.sponsor} messagem={this.state.message} getInfo={this.getInfo} />
+          </div>
+          </div>
 				</div>
 			</div>
+      </div>
 		);
 	}
 }

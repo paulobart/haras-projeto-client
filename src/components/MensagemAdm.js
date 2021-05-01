@@ -16,11 +16,12 @@ class MensagemAdm extends Component {
     };
   }
   componentDidMount = () =>{
-    this.getInfo();
+    
 
     Events.scrollEvent.register('begin', function () {
       console.log("begin", arguments);
     });
+    
 
     Events.scrollEvent.register('end', function () {
       console.log("end", arguments);
@@ -30,28 +31,20 @@ class MensagemAdm extends Component {
     scroll.scrollToTop();
   }
  
-  getInfo = async () => {
-    try {
-      const messageProfile = await apiUtils.getMessage(this.state.id);
-      const copyMessageProfile = messageProfile.message_id;
-      this.setState({
-        message: copyMessageProfile,
-      });
-    
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  
   handleSubimitMessage = async () =>{
     try {
       const payload ={
         bodyMessage: this.state.bodyMessage,
         author: 'sponsor',
-        sponsor_id: this.state.id
+        sponsor_id: this.props.user._id
       }
       console.log(this.state.message)
        await apiUtils.sendMessage(payload);
-      this.getInfo();
+      this.props.getInfo()
+      this.setState({
+        bodyMessage:"",
+      })
     } catch (error) {
       console.error(error);
     }
@@ -67,7 +60,7 @@ class MensagemAdm extends Component {
     return (
       <div className="box " >
       <div className=" is-flex is-flex-direction-column" style={{width: "100%", height: "70vh", overflow: "auto"}}>
-        {this.state.message.map((message) => {
+        {this.props.messagem.map((message) => {
           return (
             <div className="">
               {message.author === 'sponsor' ? (
@@ -132,7 +125,7 @@ class MensagemAdm extends Component {
             </div>
             <div className="field">
               <p className="control">
-                <button  onClick={this.handleSubimitMessage}>Post comment</button>
+                <button  onClick={this.handleSubimitMessage}>Enviar Mensagem</button>
               </p>
               <a onClick={this.scrollToTop}>To the top!</a>
             </div>
