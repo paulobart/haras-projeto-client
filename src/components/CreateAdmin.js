@@ -61,8 +61,34 @@ class CreateAdmin extends Component {
 
     render() {
         return (
-            <div className="mt-5 columns" style={{width: "100%"}}>
-        <form className="box column is-8 is-offset-2">
+          <div>
+          <div className="geral container ml-6 box mt-6 columns">
+            <div className="paineis column is-4">
+              <div className="box info-admin column" style={{ marginTop: -12 }}>
+                <div className="foto-admin">
+                  <div className="imagem-header">
+                    <figure className="image is-128x128">
+                      <img src={this.props.user.imageUrl} />
+                    </figure>
+                  </div>
+                </div>
+                <div className="dados-admin"></div>
+                <p className="card-header card-header-title is-size-4 has-text-info">
+                  {" "}
+                  {this.props.user.name}
+                </p>
+                <p className="card-header card-header-title is-size-6 has-text-info">
+                  {" "}
+                  E-mail: {this.props.user.email}
+                </p>
+                <p className="card-header card-header-title is-size-6 has-text-info">
+                  {" "}
+                  Telefone: {this.props.user.phone}
+                </p>
+              </div>
+            </div>
+            <div className="mt-0 columns" >
+        <form className="box column is-10 ml-3" style={{width: "130%"}}>
         <div>
         <p className="card-header-title is-size-4 has-text-info">
           Cadastre Novo Administrador
@@ -99,7 +125,7 @@ class CreateAdmin extends Component {
             </div>
           <div className="column is-4 imagem-perfil">
             <div className="notification is-fluid" >
-              <div className="file is-info is-boxed has-name" style={{justifyContent:"center"}}>
+              <div className="file is-info is-boxed has-name ml-2">
                 <label className="file-label">
                   <input className="file-input" type="file" name="imagem" onChange={this.handleChangeFile}/>
                   <span className="file-cta">
@@ -119,6 +145,8 @@ class CreateAdmin extends Component {
             <p>Cadastre-se</p>
           </button>
           </form>
+      </div>
+      </div>
       </div>
         )
     }

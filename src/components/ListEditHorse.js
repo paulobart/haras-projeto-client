@@ -93,7 +93,34 @@ handleInput = (event) => {
 
     render() {
         return (
-            <div className="box ml-5 mt-6 mr-5 is-flex is-flex-direction-column is-align-content-flex-start">
+        <div>
+            <div>
+        <div className="geral container is-fullhd ml-6 box mt-6 columns">
+          <div className="paineis column">
+            <div className="box info-admin column" style={{ marginTop: -12 }}>
+              <div className="foto-admin">
+                <div className="imagem-header">
+                  <figure className="image is-128x128">
+                    <img src={this.props.user.imageUrl} />
+                  </figure>
+                </div>
+              </div>
+              <div className="dados-admin"></div>
+              <p className="card-header card-header-title is-size-4 has-text-info">
+                {" "}
+                {this.props.user.name}
+              </p>
+              <p className="card-header card-header-title is-size-6 has-text-info">
+                {" "}
+                E-mail: {this.props.user.email}
+              </p>
+              <p className="card-header card-header-title is-size-6 has-text-info">
+                {" "}
+                Telefone: {this.props.user.phone}
+              </p>
+            </div>
+          </div>
+            <div className="box ml-5 mr-5 is-flex is-flex-direction-column is-align-content-flex-start">
                 <div>
         <p className="card-header-title is-size-4 has-text-info">
           Selecione o Cavalo para editar 
@@ -108,15 +135,20 @@ handleInput = (event) => {
               </label>
             );
           })}
-
-          {this.state.check == true ? (
-            <div><EditHorse horse={this.state.horse} editHorse={this.handleEditHorse} handleInput={this.handleInput} handleChangeFile={this.handleChangeFile} imagemFile={this.state.imagemFile}/></div>
-            
-          ):(
-            <div></div>
-          )}
+          
+          
 
           </div>
+          </div>
+          </div>
+            <div>
+          {this.state.check == true ? (
+            <div><EditHorse horse={this.state.horse} editHorse={this.handleEditHorse} handleInput={this.handleInput} handleChangeFile={this.handleChangeFile} imagemFile={this.state.imagemFile}/></div>
+            ):(
+                <div></div>
+                )}
+                </div>
+                </div>
         );
     }
 }

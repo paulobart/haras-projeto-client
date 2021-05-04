@@ -55,7 +55,7 @@ class EditHaras extends Component {
   render() {
     return (
         <div>
-        <div className="geral container is-fullhd ml-6 box mt-6 columns">
+        <div className="geral container ml-6 box mt-6 columns">
           <div className="paineis column">
             <div className="box info-admin column" style={{marginTop: -12}}>
               <div className="foto-admin">
@@ -74,8 +74,8 @@ class EditHaras extends Component {
               </p>
             </div>
           </div>
-        <div className="mt-1 columns" style={{ width: "80%" }}>
-        <form className="box column is-10 is-offset-1">
+        <div className="mt-1 ml-2 columns" style={{ width: "65%" }}>
+        <form className="box column is-10">
           <div>
             <p className="card-header-title is-size-4 has-text-info">
               Preencha as informações para alterar

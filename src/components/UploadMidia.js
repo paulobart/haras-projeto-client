@@ -149,7 +149,7 @@ handleInput = (event) => {
                     <span className="file-icon">
                       <i className="fas fa-upload"></i>
                     </span>
-                    <span className="file-label ">Imagem para perfil</span>
+                    <span className="file-label ">Escolher Mídia</span>
                   </span>
                   <span className="file-name">{this.state.imagemFile.name}</span>
                 </label>
