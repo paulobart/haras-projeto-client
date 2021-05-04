@@ -69,7 +69,7 @@ class Mensagem extends Component {
       <div className=" is-flex is-flex-direction-column" style={{width: "100%", height: "70vh", overflow: "auto"}}>
         {this.state.message.map((message) => {
           return (
-            <div className="">
+            <div className="" key={message._id}>
               {message.author === 'sponsor' ? (
                 <div>
                   <figure className="media-left is-pulled-right">

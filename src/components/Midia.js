@@ -9,22 +9,22 @@ class Midia extends Component {
     state = {
             midias: [],
             midiasVideo: [],
-            url:"",
+            url:""
         }
     
    
-     componentDidMount = async () =>{  
-           
-       this.getInfo()
-    
-  }
+     componentDidMount =  () =>{  
+        this.getInfo()
+        }
 
-     getInfo = async () => {
-        
+      getInfo = async () => {
         try {
-            const infoProfile = await apiUtils.getProfile(this.props.user)
+              await this.setState({
+        url:this.props.url
+        })
+             //const infoProfile = await apiUtils.getProfile(this.props.user)
 
-            console.log(infoProfile)
+            //console.log(infoProfile)
             // const copiaMidias = this.props.horse.midiasImg
             
 
@@ -44,7 +44,7 @@ class Midia extends Component {
         //         midiasVideo: copiaMidiasVideo,
         //         url:copiaMidiasVideo[0],
         //     });
-           this.props.getMidia(infoProfile)
+           //this.props.getMidia(infoProfile)
            } catch (error) {
             console.error(error)
         }
@@ -67,7 +67,7 @@ class Midia extends Component {
             <div className="column is-8 box mr-1"> 
                 <div className="container-imagens-mensagens ">
                     <div className="componentes-imagens">
-                      <FrameVideo url={this.props.url} />
+                      <FrameVideo url={this.state.url} />
                        <div className=" box is-flex is-flex-wrap-wrap is-justify-content-flex-start">
                        {this.props.horseVideo.map((video)=>{
                            return(
