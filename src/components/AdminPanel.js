@@ -29,44 +29,44 @@ class AdminPanel extends Component {
             </div>
           </div>
           <div className="box painel-admin column is-8"> 
-          <h5 class="card-header-title is-size-4 has-text-info">Painel Administrativo</h5>
+          <h5 className="card-header-title is-size-4 has-text-info">Painel Administrativo</h5>
             <div className="botoes-admin-cavalos card-header mt-3 py-2">
-            <div class="field is-grouped">
-                <p class="control">
-                <Link to="/admin/newhorse"><button class="ml-2 button is-link" style={{width: 200}}>
+            <div className="field is-grouped">
+                <p className="control">
+                <Link to="/admin/newhorse"><button className="ml-2 button is-link" style={{width: 200}}>
                     Cadastar Cavalo
                     </button>
                     </Link>
                 </p>
-                <p class="control">
-                <Link to="admin/edithorse"><button class="button is-info" style={{width: 200}}>
+                <p className="control">
+                <Link to="admin/edithorse"><button className="button is-info" style={{width: 200}}>
                     Editar Cavalo
                     </button>
                     </Link>    
                 </p>
-                <p class="control">
-                    <button class="button is-info" style={{width: 200}}>
+                <p className="control">
+                    <button className="button is-info" style={{width: 200}}>
                     Deletar Cavalo
                     </button>
                 </p>
                 </div>
             </div>
             <div className="botoes-admin-planos card-header mt-3 py-2">
-            <div class="field is-grouped">
-                <p class="control">
-                <Link to="admin/criarplanos"><button class="ml-2 button is-link" style={{width: 200}}>
+            <div className="field is-grouped">
+                <p className="control">
+                <Link to="admin/criarplanos"><button className="ml-2 button is-link" style={{width: 200}}>
                     Cadastrar Plano
                     </button>
                 </Link>      
                 </p>
-                <p class="control">
-                <Link to="admin/editarplanos"><button class="button is-link" style={{width: 200}}>
+                <p className="control">
+                <Link to="admin/editarplanos"><button className="button is-link" style={{width: 200}}>
                     Editar Plano
                     </button>
                 </Link>     
                 </p>
-                <p class="control">
-                    <button class="button is-link" style={{width: 200}}>
+                <p className="control">
+                    <button className="button is-link" style={{width: 200}}>
                     Deletar Plano
                     </button>
                     
@@ -74,31 +74,31 @@ class AdminPanel extends Component {
                 </div>
             </div>
             <div className="botoes-admin-haras card-header mt-3 py-2">
-            <div class="field is-grouped">
-                <p class="control">
+            <div className="field is-grouped">
+                <p className="control">
                 <Link to="/admin/updateharas">
-                    <button class="ml-2 button is-info" style={{width: 200}}>
+                    <button className="ml-2 button is-info" style={{width: 200}}>
                     Editar Haras
                     </button>
                     </Link>
                 </p>
-                <p class="control">
-                <Link to="/admin/createAdmin"><button class="button is-info" style={{width: 200}}>
+                <p className="control">
+                <Link to="/admin/createAdmin"><button className="button is-info" style={{width: 200}}>
                     Novo Administrador
                     </button>
                     </Link>
                 </p>
-                <p class="control">
-                    <button class="button is-info" style={{width: 200}}>
+                <p className="control">
+                    <button className="button is-info" style={{width: 200}}>
                     Deletar Administrador
                     </button>
                 </p>
                 </div>
             </div>
             <div className="botoes-admin-site card-header mt-3 py-2">
-            <div class="field is-grouped">
-                <p class="control">
-                    <Link to="/"><button class="ml-2 button is-link" style={{width: 200}}>
+            <div className="field is-grouped">
+                <p className="control">
+                    <Link to="/"><button className="ml-2 button is-link" style={{width: 200}}>
                     Ver Alterações Site
                     </button>
                     </Link>
@@ -106,15 +106,15 @@ class AdminPanel extends Component {
             </div>
             </div>
             <div className="botoes-admin-relacionamento card-header mt-3 py-2">
-            <div class="field is-grouped">
-                <p class="control">
-                <Link to="/admin/uploadmidia"><button class="ml-2 button is-info" style={{width: 200}}>
+            <div className="field is-grouped">
+                <p className="control">
+                <Link to="/admin/uploadmidia"><button className="ml-2 button is-info" style={{width: 200}}>
                     Upload de Mídia
                     </button>
                     </Link>
                 </p>
-                <p class="control">
-                   <Link to="/admin/conversas"> <button class="button is-info" style={{width: 200}}>
+                <p className="control">
+                   <Link to="/admin/conversas"> <button className="button is-info" style={{width: 200}}>
                     Conversas
                     </button>
                    </Link> 

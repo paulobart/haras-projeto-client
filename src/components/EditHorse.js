@@ -39,8 +39,8 @@ class EditHorse extends Component {
     render() {
         return (
           
-            <div className="mt-5 mr-6 columns" style={{width: "80%"}}>
-              <form className="box column is-8 is-offset-2">
+            <div className="mt-5 columns" style={{width: "94%"}}>
+              <form className="box column is-9" style={{marginLeft: "3%"}}>
               <div>
         <p className="card-header-title is-size-4 has-text-info">
           Preencha as informações para alterar 
