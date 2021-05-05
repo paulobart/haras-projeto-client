@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
+import { Link } from "react-router-dom"
 
 
 
@@ -28,7 +29,7 @@ class HorseList extends Component {
       console.error(error)
     }
   }
-
+ 
   render() {
     return (
       <div>
@@ -49,9 +50,10 @@ class HorseList extends Component {
               <p className="card-header card-header-title"> Cor: {horse.color} </p>
               <p className="card-header card-header-title"> Filiação: {horse.affiliation} </p>
               <p className="card-header card-header-title"> Comportamento: {horse.behavior} </p>
-              <button className="button is-fullwidth" className="button is-info" style={{width: "100%"}}>
-            <p>Apadrinhar</p>
+             <Link to={`/planos/${horse._id}`}> <button className="button is-fullwidth" className="button is-info"  style={{width: "100%", textDecoration:"none"}} >
+            Apadrinhar
           </button>
+          </Link>
               </div>
           </article>
         </form>

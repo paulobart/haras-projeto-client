@@ -219,6 +219,15 @@ class Api {
       throw Error(error)
     }
   }
+  apadrinhar = async (payload)=>{
+    try {
+      const { data } = await this.api.post('/support/tosponsor', payload)
+      console.log(data)
+      return data
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 
 }
 export default new Api();

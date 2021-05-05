@@ -9,45 +9,22 @@ class Midia extends Component {
     state = {
             midias: [],
             midiasVideo: [],
-            url:"",
+            url:""
         }
     
    
-     componentDidMount = async () =>{  
-           
-        this.getInfo()
-    
-  }
-
-     getInfo = async () => {
-        
-        try {
-            const infoProfile = await apiUtils.getProfile(this.props.user)
-
-            console.log(infoProfile)
-            const midias = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasImg
-
-            const copiaMidias = [...this.state.midias];
-            midias.forEach(midia => {
-                midia[0].slice(0,95);
-                copiaMidias.push(midia)
-            });
-            const videos = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasVideo
-            const copiaMidiasVideo = [... this.state.midiasVideo]
-             videos.forEach(video => {
-                video[0].slice(0,95);
-                copiaMidiasVideo.push(video)
-            });
-          this.setState({
-                midias: copiaMidias,
-                midiasVideo: copiaMidiasVideo,
-                url:copiaMidiasVideo[0],
-            });
-           
-           } catch (error) {
-            console.error(error)
+     componentDidMount =  () =>{  
+         console.log("did mount midia")
+         setTimeout(() => {
+            this.getInfo()
+         }, 2000);
         }
-    }
+
+      getInfo =  () => {
+            this.setState({
+                url: this.props.url
+            })
+        }
 
     sendUrl = async (event)=>{
         try {
@@ -68,7 +45,7 @@ class Midia extends Component {
                     <div className="componentes-imagens">
                       <FrameVideo url={this.state.url} />
                        <div className=" box is-flex is-flex-wrap-wrap is-justify-content-flex-start">
-                       {this.state.midiasVideo.map((video)=>{
+                       {this.props.horseVideo.map((video)=>{
                            return(
                         <div >
                             <figure className=" image mr-2 is-128x128">
@@ -85,7 +62,7 @@ class Midia extends Component {
                        
                            
                                 <div className=" box is-flex is-flex-wrap-wrap is-justify-content-flex-start" >
-                                    {this.state.midias.map((image)=>{
+                                    {this.props.horse.map((image)=>{
                                      return(
                                          
                                             <div className=" image mr-1" > 
