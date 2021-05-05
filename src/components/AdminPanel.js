@@ -33,7 +33,7 @@ class AdminPanel extends Component {
             <div className="botoes-admin-cavalos card-header mt-3 py-2">
             <div className="field is-grouped">
                 <p className="control">
-                <Link to="/admin/newhorse"><button className="ml-2 button is-link" style={{width: 200}}>
+                <Link to="/admin/newhorse"><button className="ml-2 button is-info" style={{width: 200}}>
                     Cadastar Cavalo
                     </button>
                     </Link>

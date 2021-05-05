@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import apiUtils from "../api/api.utils";
+import { Link } from "react-router-dom"
 
 
 const initialState = {
@@ -179,6 +180,7 @@ class UpdatePlan extends Component {
                 </div> 
                 <p className="has-text-danger">{this.state.message}</p>
                 <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Salvar alterações Planos</button>
+                <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link>
                  
             </div>
 
