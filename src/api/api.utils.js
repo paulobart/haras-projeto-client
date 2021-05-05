@@ -199,7 +199,7 @@ class Api {
   }
   sendVideo = async (id, video) => {
     const midiaData = new FormData();
-    midiaData.append( 'video', video )
+    midiaData.append( 'imagem', video )
     try {
       const { data } = await this.api.post(`/horse/sendVideo/${id}`, midiaData)
       console.log(data)

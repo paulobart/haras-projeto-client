@@ -4,6 +4,7 @@ import sponsorImg from '../assets/sponsor.jpg';
 import adminImg from '../assets/admin.jpg';
 import { Events, animateScroll as scroll } from 'react-scroll';
 import MensagemAdm from './MensagemAdm';
+import { Link } from "react-router-dom"
 
 
 class AdminConversation extends Component {
@@ -78,7 +79,7 @@ class AdminConversation extends Component {
 
 			<div className="geral box container is-fullhd ml-6 mt-6" >
         <div className="2 paineis columns">
-				<div className="box info-admin is-flex column mt-4">
+				<div className="info-admin is-flex column mt-4">
 					<div className="box info-admin column"style={{marginTop: -12}}>
 						<div className="foto-admin ">
 							<div className="imagem-header">
@@ -95,7 +96,7 @@ class AdminConversation extends Component {
           
 					<div className="painel column is-8 is-flex is-flex-direction-column">
             <div className="lista sponsor">
-						<div className="box  is-align-content-flex-start">
+						<div className="box is-align-content-flex-start" style={{marginTop: -22}}>
 							<div>
 								<p className="card-header-title is-size-12 has-text-info">Ver Conversa</p>
 							</div>
@@ -119,6 +120,7 @@ class AdminConversation extends Component {
 					</div>
           <div className="mensagem">
           <MensagemAdm user={this.state.sponsor} messagem={this.state.message} getInfo={this.getInfo} />
+		  <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link>
           </div>
           </div>
 				</div>

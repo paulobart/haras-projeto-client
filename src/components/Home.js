@@ -34,22 +34,24 @@ class Home extends Component {
               <div className="hero-foot"></div>
             </section>
              <div className="columns">
-              <div className="column">
-              <figure><img src={banner4} alt="header"/></figure>
+              <div className="column" >
+              <figure><img className="banner rigth" style={{boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
+              src={banner4} alt="header"/></figure>
               </div>
               <div className="column">
-              <figure><img src={banner5} alt="header"/></figure>
+              <figure><img className="banner left" style={{boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
+              src={banner5} alt="header"/></figure>
               </div>
             </div>
             <footer className="footer">
               <div className="content has-text-centered">
                 <p>
-                  <strong>Haras</strong> by{" "}
-                   <a href="https://www.ironhack.com/br">
+                  <strong>Haras and Horse Power Plataform</strong> by{" "}
+                   <a href="https://github.com/paulobart/haras-projeto-client">
                     Alison Paulinho e Paulo Duarte
                   </a>
-                  . The source code is licensed <a href="https://www.ironhack.com/br"> Ironhack </a>
-                  . The website content is licensed {" "}
+                  . <br></br> Web Dev PT October 2020 <a href="https://www.ironhack.com/br"> Ironhack </a>
+                  . The website content is licensed to {" "}
                   <a href="https://www.ironhack.com/br">
                   Ironhack
                   </a>

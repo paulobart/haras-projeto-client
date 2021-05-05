@@ -69,16 +69,16 @@ class App extends Component {
           <Route exact path='/listacavalosapadrinhados' component= {ListSponsoredHorses}/>
           <Route exact path='/admin' render= {(props) => <AdminLogin {...props} userAdm ={this.handleUserAdm}/>}/>
           <Route exact path='/adminpainel' render = {(props) => <AdminPanel {...props} user = {this.state.userAdm}/>}/>
-          <Route exact path='/admin/newhorse' component= {HorseRegister}/>
-          <Route exact path='/admin/edithorse' component= {ListEditHorse}/>
+          <Route exact path='/admin/newhorse' render = {(props) => <HorseRegister {...props} user = {this.state.userAdm}/>}/>
+          <Route exact path='/admin/edithorse' render = {(props) => <ListEditHorse {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/criarplanos' component= {CreatePlanos}/>
           <Route exact path='/admin/editarplanos' component= {ListUpdatePlanos}/>
           <Route exact path='/admin' component= {AdminPanel}/>
           <Route exact path='/admin/conversas' render = {(props) => <AdminConversation {...props} user = {this.state.userAdm}/>}/>
-          
+          <Route exact path='/admin/createAdmin' render = {(props) => <CreateAdmin {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/updateharas' render = {(props) => <EditHaras {...props} user = {this.state.userAdm}/>}/>
-          <Route exact path='/admin/createAdmin' component= {CreateAdmin}/>
           <Route exact path='/admin/uploadmidia' render = {(props) => <UploadMidia {...props} user = {this.state.userAdm}/>}/>
+          
 
 
         </Switch>
