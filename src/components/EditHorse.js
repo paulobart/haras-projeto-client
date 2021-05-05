@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import apiUtils from "../api/api.utils";
 import ListEditHorse from './ListEditHorse';
+import { Link } from "react-router-dom"
 
 const initialState = {
     name: "",
@@ -101,6 +102,7 @@ class EditHorse extends Component {
           <button className="button is-fullwidth" className="button is-info" onClick={this.props.editHorse} style={{width: "100%"}}>
             <p>Gravar Alterações do Cavalo</p>
           </button>
+          <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link>
           </form>
     </div>
         )
