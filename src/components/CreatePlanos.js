@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
+import { Link } from "react-router-dom"
 
 class CreatePlanos extends Component {
 
@@ -166,7 +167,7 @@ handleInput = (event) => {
                 </div> 
                 <p className="has-text-danger">{this.state.message}</p>
                 <button className="button is-fullwidth is-info mt-3" onClick={this.handleSubmit} >Criar Planos</button>
-                 
+                <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link> 
             </div>
 
             <div className="mt-5 mr-6 ml-6 column is-4">

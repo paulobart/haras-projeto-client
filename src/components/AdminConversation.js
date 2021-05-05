@@ -4,6 +4,7 @@ import sponsorImg from '../assets/sponsor.jpg';
 import adminImg from '../assets/admin.jpg';
 import { Events, animateScroll as scroll } from 'react-scroll';
 import MensagemAdm from './MensagemAdm';
+import { Link } from "react-router-dom"
 
 
 class AdminConversation extends Component {
@@ -119,6 +120,7 @@ class AdminConversation extends Component {
 					</div>
           <div className="mensagem">
           <MensagemAdm user={this.state.sponsor} messagem={this.state.message} getInfo={this.getInfo} />
+		  <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link>
           </div>
           </div>
 				</div>

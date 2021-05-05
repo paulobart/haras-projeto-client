@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import apiUtils from "../api/api.utils";
+import { Link } from "react-router-dom"
 
 const initialState = {
     name: "",
@@ -144,7 +145,9 @@ class CreateAdmin extends Component {
           <button className="button is-fullwidth" className="button is-info" onClick={this.handleSubmit} style={{width: "100%"}}>
             <p>Cadastre-se</p>
           </button>
+          <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link>
           </form>
+          
       </div>
       </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
+import { Link } from "react-router-dom"
 
 const initialState = {
   name: "",
@@ -198,7 +199,8 @@ class HorseRegister extends Component {
               style={{ width: "100%" }}
             >
               <p>Cadastre Novo Cavalo</p>
-            </button>
+            </button >
+            <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link>
           </div>
         </div>
       </div>

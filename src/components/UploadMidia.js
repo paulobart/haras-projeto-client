@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiUtils from "../api/api.utils";
+import { Link } from "react-router-dom"
 
 
 class UploadMidia extends Component {
@@ -160,6 +161,7 @@ handleInput = (event) => {
               <button className="button is-fullwidth is-info" onClick={this.handleMidia} style={{width: "97%"}}>
             <p>Enviar Mídia</p>
           </button>
+          <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" style={{width: "97%"}} >Voltar</button></Link>
           </div>
         </div>
       </div>
