@@ -23,19 +23,15 @@ class Profile extends Component {
         url:"",
     }
       componentDidMount = async () =>{  
-           console.log("did do profile")
        this.getMidia()
-    
-  }
+    }
 
-       
-     handleInput = async (event) =>{
+    handleInput = async (event) =>{
          try {
              this.setState({
                  page: event.target.innerHTML 
                 })
         } catch (error) {
-            
         }
      } 
 
@@ -45,7 +41,6 @@ class Profile extends Component {
                 page: event.target.name
                })
        } catch (error) {
-           
        }
     } 
     getMidia = async ()=>{
@@ -61,12 +56,9 @@ class Profile extends Component {
             
         }
     }
-    getHorseToIndex = (index)=>{
-        console.log(index)
-    }
+    
     getHorseToEdit = async (index) => {
     try {
-        console.log("oi")
         const imagens = this.state.horses[index].horse_id.midiasImg
         const copiaMidias = []
         
@@ -147,6 +139,7 @@ class Profile extends Component {
                                 </ul>
                             </div>
                         </div>
+                               
                     </div>
                     
                     
@@ -161,36 +154,36 @@ class Profile extends Component {
                                   this.state.page == "Reserva" ? (
                                <SponsoredHorses namePage={ this.handleInputButton }/> 
                                 ) : (
-                            <div>
-                                <nav className="pagination is-centered" role="navigation" aria-label="pagination">
-                                        <a className="pagination-previous" style={{marginTop: -160}}>Previous</a>
-                                        <a className="pagination-next" style={{marginTop: -160}}>Next page</a>
-                                    <ul className="pagination-list">
-                                        {this.state.horses.map((horse, index) => {
-                                            return (
-                                            <>
-                                            <li><a className="pagination-link"style={{marginTop: -90}} aria-label="Goto page 1" onClick={()=>this.getHorseToEdit(index)}> {horse.horse_id.name} </a></li>
-                                        
-                                              </>
-                                            //  <label key={horse._id} className="radio panel-block control ml-1">
-                                            //     <input type="radio" name="horse" onChange={()=>this.getHorseToEdit(index)}/>
-                                            //     <span className="has-text-info has-text-weight-semibold ml-3"> {horse.horse_id.name} </span>
-                                            // </label>
-                     
-                                            );
-                                        })}
-                                    </ul>
-                                </nav>
-                                <div className="columns" style={{ marginTop: -90 }}>
-                                    <Midia user={ this.props.user.id }  horse={this.state.midias} horseVideo={this.state.midiasVideo} url={this.state.url} />
-                                    <Mensagem user={ this.props.user }/>
-                                </div>
+                                <div>
+                                    <div>
+                                        <div className="mr-6 mb-3 has-text-info is-size-5" style={{marginTop: -120}}> Escolha o cavalo para ver os videos e imagens</div>
+                                            <nav className="pagination is-centered" role="navigation" aria-label="pagination">
+                                                {/*<a className="pagination-previous" style={{marginTop: -160}}>Previous</a>
+                                                 <a className="pagination-next" style={{marginTop: -160}}>Next page</a>*/}
+                                                <ul className="pagination-list">
+                                                    {this.state.horses.map((horse, index) => {
+                                                        return (
+                                                        <>
+                                                        <li><div
+                                                         className="pagination-link p-2 has-text-white has-background-grey-light" 
+                                                        aria-label="Goto page 1" onClick={()=>this.getHorseToEdit(index)}> {horse.horse_id.name} 
+                                                        </div></li>
+                                                        </>
+                                                        );
+                                                    })}
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                            <div className="columns mt-5 " >
+                                                <Midia user={ this.props.user.id }  horse={this.state.midias} horseVideo={this.state.midiasVideo} url={this.state.url} />
+                                                <Mensagem user={ this.props.user }/>
+                                            </div>
+                                    </div>
+                                )}
                             </div>
-                        )}
                         </div>
-                    </div>
                 </div>  
-        </div>
+            </div>
         )
     }
 

@@ -125,9 +125,9 @@ class MensagemAdm extends Component {
             </div>
             <div className="field">
               <p className="control">
-                <button  onClick={this.handleSubimitMessage}>Enviar Mensagem</button>
+                <button className="button is-link"  onClick={this.handleSubimitMessage}>Enviar Mensagem</button>
               </p>
-              <a onClick={this.scrollToTop}>To the top!</a>
+              <a onClick={this.scrollToTop}>Volte ao topo!</a>
             </div>
           </div>
         </article>

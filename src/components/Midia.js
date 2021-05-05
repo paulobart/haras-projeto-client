@@ -14,41 +14,17 @@ class Midia extends Component {
     
    
      componentDidMount =  () =>{  
-        this.getInfo()
+         console.log("did mount midia")
+         setTimeout(() => {
+            this.getInfo()
+         }, 2000);
         }
 
-      getInfo = async () => {
-        try {
-              await this.setState({
-        url:this.props.url
-        })
-             //const infoProfile = await apiUtils.getProfile(this.props.user)
-
-            //console.log(infoProfile)
-            // const copiaMidias = this.props.horse.midiasImg
-            
-
-            // const copiaMidias = [...this.state.midias];
-            // midias.forEach(midia => {
-            //     midia[0].slice(0,95);
-            //     copiaMidias.push(midia)
-            // });
-        //     const videos = infoProfile.infos.refPlanHorse_id[0].horse_id.midiasVideo
-        //     const copiaMidiasVideo = [... this.state.midiasVideo]
-        //      videos.forEach(video => {
-        //         video[0].slice(0,95);
-        //         copiaMidiasVideo.push(video)
-        //     });
-        //   this.setState({
-        //         midias: this.props.horse,
-        //         midiasVideo: copiaMidiasVideo,
-        //         url:copiaMidiasVideo[0],
-        //     });
-           //this.props.getMidia(infoProfile)
-           } catch (error) {
-            console.error(error)
+      getInfo =  () => {
+            this.setState({
+                url: this.props.url
+            })
         }
-    }
 
     sendUrl = async (event)=>{
         try {
