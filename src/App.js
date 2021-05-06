@@ -22,6 +22,9 @@ import ListUpdatePlanos from "./components/ListUpdatePlanos";
 import AdminConversation from "./components/AdminConversation";
 import EditHaras from "./components/EditHaras";
 import UploadMidia from "./components/UploadMidia";
+import ListDeleteHorse from "./components/ListDeleteHorse";
+import ListPlanToDelete from "./components/ListPlanToDelete";
+import ListAdminToDelete from "./components/ListAdminToDelete";
 
 class App extends Component {
 
@@ -57,7 +60,7 @@ class App extends Component {
     
     return (
       <div className="App">
-        <Navbar/>
+        <Navbar user={this.state.user}/>
         <Switch>
           <Route exact path='/' component= {Home}/>
           <Route exact path='/login' render= {(props) => <Login {...props} user={this.handleUser}/>}/>
@@ -71,17 +74,17 @@ class App extends Component {
           <Route exact path='/adminpainel' render = {(props) => <AdminPanel {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/newhorse' render = {(props) => <HorseRegister {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/edithorse' render = {(props) => <ListEditHorse {...props} user = {this.state.userAdm}/>}/>
+          <Route exact path='/admin/deletehorse' render = {(props) => <ListDeleteHorse {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/criarplanos' component= {CreatePlanos}/>
           <Route exact path='/admin/editarplanos' component= {ListUpdatePlanos}/>
+          <Route exact path='/admin/deletarplanos' render = {(props) => <ListPlanToDelete {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin' component= {AdminPanel}/>
-          <Route exact path='/admin/conversas' render = {(props) => <AdminConversation {...props} user = {this.state.userAdm}/>}/>
-          <Route exact path='/admin/createAdmin' render = {(props) => <CreateAdmin {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/updateharas' render = {(props) => <EditHaras {...props} user = {this.state.userAdm}/>}/>
+          <Route exact path='/admin/createAdmin' render = {(props) => <CreateAdmin {...props} user = {this.state.userAdm}/>}/>
+          <Route exact path='/admin/deleteAdmin' render = {(props) => <ListAdminToDelete {...props} user = {this.state.userAdm}/>}/>
+          <Route exact path='/admin/conversas' render = {(props) => <AdminConversation {...props} user = {this.state.userAdm}/>}/>
           <Route exact path='/admin/uploadmidia' render = {(props) => <UploadMidia {...props} user = {this.state.userAdm}/>}/>
-          
-
-
-        </Switch>
+      </Switch>
         
       </div>
     );

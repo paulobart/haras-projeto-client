@@ -45,9 +45,10 @@ class AdminPanel extends Component {
                     </Link>    
                 </p>
                 <p className="control">
-                    <button className="button is-info" style={{width: 200}}>
+                <Link to="admin/deletehorse"><button className="button is-info" style={{width: 200}}>
                     Deletar Cavalo
                     </button>
+                    </Link>
                 </p>
                 </div>
             </div>
@@ -63,13 +64,13 @@ class AdminPanel extends Component {
                 <Link to="admin/editarplanos"><button className="button is-link" style={{width: 200}}>
                     Editar Plano
                     </button>
-                </Link>     
+                </Link>
                 </p>
                 <p className="control">
-                    <button className="button is-link" style={{width: 200}}>
+                <Link to="/admin/deletarplanos"><button className="button is-link" style={{width: 200}}>
                     Deletar Plano
                     </button>
-                    
+                </Link>        
                 </p>
                 </div>
             </div>
@@ -89,9 +90,10 @@ class AdminPanel extends Component {
                     </Link>
                 </p>
                 <p className="control">
-                    <button className="button is-info" style={{width: 200}}>
+                <Link to="/admin/deleteAdmin"><button className="button is-info" style={{width: 200}}>
                     Deletar Administrador
                     </button>
+                    </Link> 
                 </p>
                 </div>
             </div>
