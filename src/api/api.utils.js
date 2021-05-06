@@ -3,6 +3,7 @@ import axios from "axios";
 class Api {
   constructor() {
     this.api = axios.create({
+      //baseURL: 'http://localhost:5000',
       baseURL: "https://haras-api.herokuapp.com/",
     });
 
@@ -40,6 +41,25 @@ class Api {
     } catch (error) {
       console.log(error)
     }
+  };
+
+  getAdmin = async () => {
+    try {
+      const { data } = await this.api.get(`/auth/adm`)
+      return data
+    } catch (error) {
+      throw Error(error)      
+    }
+  };
+
+  adminToDelete = async (id) => {
+   try {
+     const { data } = await this.api.post(`/auth/delete/${id}`)
+     return data
+    } catch (error) {
+    throw Error(error) 
+   }
+ 
   }
   
   login = async (payload) => {
@@ -114,6 +134,16 @@ class Api {
     }
   }
 
+  horseToDelete = async (id) => {
+    try {
+      const { data } = await this.api.post(`/horse/delete/${id}`)
+      return data
+     } catch (error) {
+     throw Error(error) 
+    }
+  
+   }
+
   getSponsoredHorses = async (id) =>{
     try {
       const { data } = await this.api.get(`/support/listhorsetosponsor/${id}`)
@@ -168,6 +198,21 @@ class Api {
       throw Error(error)
     }
   }
+
+  planToDelete = async (id) => {
+    try {
+      const { data } = await this.api.post(`/plans/delete/${id}`)
+      return data
+     } catch (error) {
+     throw Error(error) 
+    }
+  
+   }
+
+
+
+
+
   listSponsor = async () =>{
     try {
       const  { data } = await this.api.get('/auth/listsponsor')

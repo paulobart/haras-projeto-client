@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import apiUtils from "../api/api.utils";
+import ButtonDelete from './ButtonDelete';
 import EditHorse from './EditHorse';
+import { Link } from "react-router-dom"
 
 
 
-class ListEditHorse extends Component {
+class ListDeleteHorse extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,8 +47,6 @@ getHorseToEdit = (index) => {
 handleEditHorse = async (event) => {
     event.preventDefault()
     try {
-        //const {name, age, affiliation, color, breed, behavior} = this.state;
-        
         await this.handleUpload()
         const { imagem } = this.state;
         const editedHorseTemp = {...this.state.horse}
@@ -88,13 +88,25 @@ handleInput = (event) => {
     });
 };
 
+deleteHorse = async () => {
+  try {
+      const horse = await apiUtils.horseToDelete(this.state.horse._id);
+      this.setState({
+          check: false
+      })
+      this.loadHorseList();
+  } catch (error) {
+      console.error(error)
+  }
+}
+
 
 
 
     render() {
         return (
         <div>
-            <div>
+        <div>
         <div className="geral container is-fullhd ml-6 box mt-6 columns">
           <div className="paineis column">
             <div className="box info-admin column" style={{ marginTop: -12 }}>
@@ -123,34 +135,36 @@ handleInput = (event) => {
             <div className="box ml-5 mr-5 is-flex is-flex-direction-column is-align-content-flex-start">
                 <div>
         <p className="card-header-title is-size-4 has-text-info">
-          Selecione o Cavalo para editar 
+          Selecione o Cavalo para Deletar 
           </p>
       </div>
       {this.state.horses.map((horse, index) => {
         return (
               
-              <label key={horse._id} className="radio panel-block control ml-1">
+          <label key={horse._id} className="radio panel-block control ml-1">
                 <input type="radio" name="horse" onChange={()=>this.getHorseToEdit(index)}/>
                 <span className="has-text-info has-text-weight-semibold ml-3"> {horse.name} </span>
               </label>
             );
           })}
+          <Link to="/adminpainel"><button className="button is-fullwidth is-link mt-3" >Voltar</button></Link>
           
           
 
-          </div>
-          </div>
-          </div>
             <div>
           {this.state.check == true ? (
-            <div><EditHorse horse={this.state.horse} editHorse={this.handleEditHorse} handleInput={this.handleInput} handleChangeFile={this.handleChangeFile} imagemFile={this.state.imagemFile}/></div>
+            <div><button className="button is-fullwidth is-danger mt-3" onClick={this.deleteHorse}>Deletar Cavalo</button></div>
             ):(
-                <div></div>
-                )}
+              <div></div>
+              )}
+              
                 </div>
+          </div>
+          </div>
+          </div>
                 </div>
         );
     }
 }
 
-export default ListEditHorse
+export default ListDeleteHorse

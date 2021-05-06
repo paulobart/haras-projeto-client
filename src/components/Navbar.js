@@ -30,13 +30,7 @@ class Navbar extends Component {
               </NavLink>
             </div>
             <div
-              onClick={this.responsiveMenu}
-              role="button"
-              className={`navbar-burger ${this.state.menu}`}
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample"
-            >
+              onClick={this.responsiveMenu} role="button" className={`navbar-burger ${this.state.menu}`} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -49,7 +43,7 @@ class Navbar extends Component {
           >
             <div className="navbar-start">
               <div className="navbar-item">Haras</div>
-              <NavLink to="/planos" className="navbar-item">Planos</NavLink>
+              <NavLink to="/planos/." className="navbar-item">Planos</NavLink>
               <NavLink to="/cavalos" className="navbar-item">Cavalos</NavLink>
               <div className="navbar-item">Reservas</div>
               <div className="navbar-item">Help</div>
@@ -58,13 +52,19 @@ class Navbar extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
+                  {this.props.user ? (
+                    <>
+                  <NavLink className="button is-danger" to="/logout"> Logout </NavLink>
+                  </>
+                  ) : (
+                    <>
+                    <NavLink className="button is-link" to="/login"> Login </NavLink>
                   <NavLink className="button is-info" to="/signup">
                     <strong>Sign up</strong>
                   </NavLink>
-                  <NavLink className="button is-light" to="/login">
-                    {" "}
-                    Login{" "}
-                  </NavLink>
+                  </>
+                  )
+                  }
                 </div>
               </div>
             </div>
