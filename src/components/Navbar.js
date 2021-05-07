@@ -19,6 +19,11 @@ class Navbar extends Component {
     }
   };
 
+  logout = () => {
+    localStorage.removeItem("token");
+    window.location = `/`;
+  }
+ 
   render() {
     return (
       <div>
@@ -42,7 +47,7 @@ class Navbar extends Component {
             className={`navbar-menu ${this.state.menu}`}
           >
             <div className="navbar-start">
-              <div className="navbar-item">Haras</div>
+              <NavLink to="/" className="navbar-item">Haras</NavLink>
               <NavLink to="/planos/." className="navbar-item">Planos</NavLink>
               <NavLink to="/cavalos" className="navbar-item">Cavalos</NavLink>
               <div className="navbar-item">Reservas</div>
@@ -54,7 +59,7 @@ class Navbar extends Component {
                 <div className="buttons">
                   {this.props.user ? (
                     <>
-                  <NavLink className="button is-danger" to="/logout"> Logout </NavLink>
+                  <NavLink className="button is-danger" to="/logout" onClick={this.logout}> Logout </NavLink>
                   </>
                   ) : (
                     <>

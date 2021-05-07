@@ -18,8 +18,8 @@ class Api {
         return response;
       },
       (error) => {
-      //  localStorage.removeItem("token");
-      //  window.location = `/login`;
+        localStorage.removeItem("token");
+        window.location = `/login`;
       }
     );
   }

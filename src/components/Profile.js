@@ -8,6 +8,7 @@ import ListSponsoredHorses from "./ListSponsoredHorses";
 import HorseList from './HorseList'
 import SponsoredHorses from './SponsoredHorses'
 import apiUtils from '../api/api.utils';
+import ImageHeader from './ImageHeader'
 
 
 class Profile extends Component {
@@ -45,8 +46,15 @@ class Profile extends Component {
     } 
     getMidia = async ()=>{
         try {
+            const horseArray = []
             const infoProfile = await apiUtils.getProfile(this.props.user.id)
-            console.log(infoProfile.infos.refPlanHorse_id[0].horse_id.midiasVideo[0].slice(0,95))
+            console.log(infoProfile.infos.refPlanHorse_id)
+            //infoProfile.infos.refPlanHorse_id.filter((horse)=>{
+              //  return horse.horse_id !== null
+            //})
+
+            // console.log(horseArray.push(horse))
+            
             this.setState({
                 horses:infoProfile.infos.refPlanHorse_id,
                 url:infoProfile.infos.refPlanHorse_id[0].horse_id.midiasVideo[0].slice(0,95),
@@ -92,8 +100,8 @@ class Profile extends Component {
                 <div className="notification">
                     <div className="container-geral" style={{marginTop: -90}}>
                         <div className="imagem-header">
-                            <figure className="image is-3by1">
-                                <img src={headerImg} alt="header"/>
+                            <figure>
+                                <ImageHeader/>
                             </figure>
                         </div>
                         <div className="imagem-menu is-flex is-justify-content-space-between" style={{marginTop: -35}}>
@@ -164,9 +172,8 @@ class Profile extends Component {
                                                     {this.state.horses.map((horse, index) => {
                                                         return (
                                                         <>
-                                                        <li><div
-                                                         className="pagination-link p-2 has-text-white has-background-grey-light" 
-                                                        aria-label="Goto page 1" onClick={()=>this.getHorseToEdit(index)}> {horse.horse_id.name} 
+                                                        <li><div className="pagination-link p-2 has-text-white has-background-grey-light"
+                                                                 aria-label="Goto page 1" onClick={()=>this.getHorseToEdit(index)}> {horse.horse_id.name} 
                                                         </div></li>
                                                         </>
                                                         );
